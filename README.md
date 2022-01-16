@@ -11,7 +11,7 @@ If you want to learn more about ``setup.py`` files, check out `this repository <
 ## Getting Started ##
 
 Download this repo by running `git clone https://github.com/Marcusk19/Pathfinder.git`
-or alternatively download from GitHub as zip and unpack it.
+or alternatively download from GitHub as zipfile and unpack it.
 
 Main code for HUD and directions can be found in *src* 
 
