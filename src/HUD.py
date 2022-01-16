@@ -1,24 +1,44 @@
+#!/usr/bin/env python3
 # Main code for HUD Display
 # Marcus Kok 1/16/22
 
+
 import os
-from tkinter import *
-from tkinter import ttk 
+import tkinter as tk
+from tkinter import BOTH, Canvas, W
+import directions
 
-print('Hello World');
 
-master = Tk()
+dirC = directions.directionController
 
-Label(master, text='Enter your name').grid(row=0)
-Label(master, text='Enter your email').grid(row=1)
+dirMessage = dirC.sayHello()
+print(dirMessage);
 
-e1 = Entry(master)
-e2 = Entry(master)
+class Display(tk.Frame):
+    def __init__(self):
+        super().__init__()
 
-e1.grid(row=0, column=1)
-e2.grid(row=1, column=1)
+        self.initUI()
+    
+    def initUI(self):
+        self.master.title("Lines")
+        self.pack(fill=BOTH, expand=1)
 
-mainloop()
+        canvas = Canvas(self)
+        canvas.create_text(100, 125, anchor=W, font="Purisa",
+                            text=dirMessage)
 
+        canvas.pack(fill=BOTH, expand = 1)
+
+
+def main():
+
+    root = tk.Tk()
+    disp = Display()
+    root.geometry("400x250+300+300")
+    root.mainloop()
+
+if __name__ == '__main__':
+    main()
 
 

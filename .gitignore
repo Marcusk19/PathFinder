@@ -91,3 +91,6 @@ ENV/
 
 # python environment 
 pathfinder/*
+
+# notes
+notes.txt

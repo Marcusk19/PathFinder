@@ -10,8 +10,24 @@ If you want to learn more about ``setup.py`` files, check out `this repository <
 
 ## Getting Started ##
 
-To install dependencies run
-``pip install -r requirements.txt``
+Download this repo by running `git clone https://github.com/Marcusk19/Pathfinder.git`
+or alternatively download from GitHub as zip and unpack it.
+
+Main code for HUD and directions can be found in *src* 
+
+To run code first enter working directory:
+`cd pathfinder`
+
+Install dependencies with:
+`pip install -r requirements.txt`
+
+Then execute binary:
+`python3 src/HUD.py`
+
+
+
+
+
 TODO
 
 ## External Docs ##
