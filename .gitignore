@@ -94,3 +94,6 @@ pathfinder/*
 
 # notes
 notes.txt
+
+# sensitive variables
+production.env

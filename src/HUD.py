@@ -12,33 +12,38 @@ import directions
 dirC = directions.directionController
 
 dirMessage = dirC.sayHello()
-print(dirMessage);
+# print(dirMessage);
+dirC.getDirections("Disneyland", "Hollywood")
 
-class Display(tk.Frame):
-    def __init__(self):
-        super().__init__()
+instructions = dirC.getInstructions()
+for instruction in instructions:
+    print(instruction)
 
-        self.initUI()
+# class Display(tk.Frame):
+#     def __init__(self):
+#         super().__init__()
+
+#         self.initUI()
     
-    def initUI(self):
-        self.master.title("Lines")
-        self.pack(fill=BOTH, expand=1)
+#     def initUI(self):
+#         self.master.title("Lines")
+#         self.pack(fill=BOTH, expand=1)
 
-        canvas = Canvas(self)
-        canvas.create_text(100, 125, anchor=W, font="Purisa",
-                            text=dirMessage)
+#         canvas = Canvas(self)
+#         canvas.create_text(100, 125, anchor=W, font="Purisa",
+#                             text=dirMessage)
 
-        canvas.pack(fill=BOTH, expand = 1)
+#         canvas.pack(fill=BOTH, expand = 1)
 
 
-def main():
+# def main():
 
-    root = tk.Tk()
-    disp = Display()
-    root.geometry("400x250+300+300")
-    root.mainloop()
+#     root = tk.Tk()
+#     disp = Display()
+#     root.geometry("400x250+300+300")
+#     root.mainloop()
 
-if __name__ == '__main__':
-    main()
+# if __name__ == '__main__':
+#     main()
 
 
