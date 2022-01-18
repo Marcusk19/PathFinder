@@ -11,20 +11,22 @@ dotenv_path = Path('../pathfinder/.env')
 load_dotenv(dotenv_path=dotenv_path)
 api_key = os.getenv('API_KEY')
 
-# FIFO instruction queue
-instruction_queue = []
 
-class directionController():
-    def sayHello():
-        return "Hello from directions.py!"
+class DirectionController():
+    # FIFO instruction queue
+    instruction_queue = []
+
+    def __init__(self, pointA, pointB):
+        self.user_origin = pointA
+        self.user_destination = pointB
 
     # Handler function to retrieve directions from Google api
-    def getDirections(user_origin, user_destination):
+    def getDirections(self):
         url = 'https://maps.googleapis.com/maps/api/directions/json'
         # define parameters for http request
         params = dict(
-            origin = user_origin,
-            destination = user_destination,
+            origin = self.user_origin,
+            destination = self.user_destination,
             key = api_key
         )
 
@@ -42,11 +44,11 @@ class directionController():
                     # parsing using BeautifulSoup is required for text
                     ins_html = BeautifulSoup(step['html_instructions'], 'html.parser') 
                     instruction = ins_html.get_text()
-                    instruction_queue.append(instruction)
+                    self.instruction_queue.append(instruction)
         
-        return 
+        return directions
 
-    def getInstructions():
-        return instruction_queue
+    def getInstructions(self):
+        return self.instruction_queue
 
         

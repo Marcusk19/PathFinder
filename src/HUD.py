@@ -6,23 +6,26 @@
 import os, sys, getopt
 import tkinter as tk
 from tkinter import BOTH, Canvas, W
-import directions
+from directions import DirectionController
 
 def main():
     # instance of directionController
     input_A = sys.argv[1]
     input_B = sys.argv[2]
 
-    dirC = directions.directionController
-
     locA = str(input_A).replace(' ', '&')
     locB = str(input_B).replace(' ', '&')
 
-    dirMessage = dirC.sayHello()
     print("Directions from " + str(input_A) + " to " + str(input_B))
-    dirC.getDirections(locA, locB)
 
-    instructions = dirC.getInstructions()
+    controller = DirectionController(locA, locB)
+    controller.getDirections()
+
+    instructions = controller.getInstructions()
+    
+    if len(instructions) == 0:
+        print("Directions could not be found")
+
     for instruction in instructions:
         print(instruction)
 
