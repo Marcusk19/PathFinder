@@ -90,10 +90,11 @@ ENV/
 .ropeproject
 
 # python environment 
-pathfinder/*
+pathfinder/
 
 # notes
 notes.txt
 
 # sensitive variables
 production.env
+

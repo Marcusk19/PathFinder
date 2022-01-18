@@ -8,6 +8,14 @@ Structure of this codebase follows best practices recommendations
 
 If you want to learn more about ``setup.py`` files, check out `this repository <https://github.com/kennethreitz/setup.py>`_.
 
+## Structure ##
+Breakdown of file structure: <br />
+* **docs** - contains documentation (not used yet)
+* **sample** - contains sample code from GitHub used for structuring this repo
+* **src** - most important directory, contains code for PathFinder
+* **target** - not sure what this one is for yet
+* **tests** - contains code for testing
+
 ## Getting Started ##
 
 Download this repo by running `git clone https://github.com/Marcusk19/Pathfinder.git`
