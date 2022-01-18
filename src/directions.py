@@ -4,9 +4,10 @@ import json, html, requests
 import os
 from dotenv import load_dotenv
 from pathlib import Path
+from bs4 import BeautifulSoup
 
 # set up of env variables
-dotenv_path = Path('../pathfinder/production.env') 
+dotenv_path = Path('../pathfinder/.env') 
 load_dotenv(dotenv_path=dotenv_path)
 api_key = os.getenv('API_KEY')
 
@@ -16,10 +17,6 @@ instruction_queue = []
 class directionController():
     def sayHello():
         return "Hello from directions.py!"
-
-    def getNextDir():
-        nextDir = "NULL"
-        return nextDir
 
     # Handler function to retrieve directions from Google api
     def getDirections(user_origin, user_destination):
@@ -41,8 +38,11 @@ class directionController():
             for leg in legs:
                 steps = leg['steps']
                 for step in steps:
-                    instruction = step['html_instructions']
-                    instruction_queue.append(html.unescape(instruction))
+                    # instructions from json are in html format
+                    # parsing using BeautifulSoup is required for text
+                    ins_html = BeautifulSoup(step['html_instructions'], 'html.parser') 
+                    instruction = ins_html.get_text()
+                    instruction_queue.append(instruction)
         
         return 
 
