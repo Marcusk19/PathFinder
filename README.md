@@ -20,7 +20,7 @@ To run code first enter working directory:
 Install dependencies with:
 `pip install -r requirements.txt` <br />
 Then execute binary:
-`python3 src/HUD.py` <br />
+`python src/HUD.py "ORIGIN" "DESTINATION"` <br />
 
 TODO
 
