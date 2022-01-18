@@ -34,3 +34,4 @@ View the `example.env` file to see how you should set up your .env file and repl
 * [Git contributing](http://www.git-scm.com/book/en/v2/Distributed-Git-Contributing-to-a-Project#Commit-Guidelines "Using git")
 * [Python structuring](https://docs.python-guide.org/writing/structure/ "How to structure python code")
 * [Python testing](https://docs.python-guide.org/writing/tests/ "How to test your code")
+* [BeautifulSoup](https://beautiful-soup-4.readthedocs.io/en/latest/ "BeautifulSoup Documentation")
