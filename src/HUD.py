@@ -3,47 +3,30 @@
 # Marcus Kok 1/16/22
 
 
-import os
+import os, sys, getopt
 import tkinter as tk
 from tkinter import BOTH, Canvas, W
 import directions
 
+def main():
+    # instance of directionController
+    input_A = sys.argv[1]
+    input_B = sys.argv[2]
 
-dirC = directions.directionController
+    dirC = directions.directionController
 
-dirMessage = dirC.sayHello()
-# print(dirMessage);
-dirC.getDirections("Disneyland", "Hollywood")
+    locA = str(input_A).replace(' ', '&')
+    locB = str(input_B).replace(' ', '&')
 
-instructions = dirC.getInstructions()
-for instruction in instructions:
-    print(instruction)
+    dirMessage = dirC.sayHello()
+    print("Directions from " + str(input_A) + " to " + str(input_B))
+    dirC.getDirections(locA, locB)
 
-# class Display(tk.Frame):
-#     def __init__(self):
-#         super().__init__()
+    instructions = dirC.getInstructions()
+    for instruction in instructions:
+        print(instruction)
 
-#         self.initUI()
-    
-#     def initUI(self):
-#         self.master.title("Lines")
-#         self.pack(fill=BOTH, expand=1)
+main()
 
-#         canvas = Canvas(self)
-#         canvas.create_text(100, 125, anchor=W, font="Purisa",
-#                             text=dirMessage)
-
-#         canvas.pack(fill=BOTH, expand = 1)
-
-
-# def main():
-
-#     root = tk.Tk()
-#     disp = Display()
-#     root.geometry("400x250+300+300")
-#     root.mainloop()
-
-# if __name__ == '__main__':
-#     main()
 
 

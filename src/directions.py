@@ -11,7 +11,7 @@ dotenv_path = Path('../pathfinder/.env')
 load_dotenv(dotenv_path=dotenv_path)
 api_key = os.getenv('API_KEY')
 
-# instruction queue
+# FIFO instruction queue
 instruction_queue = []
 
 class directionController():
