@@ -4,8 +4,6 @@
 
 
 import os, sys, getopt
-import tkinter as tk
-from tkinter import BOTH, Canvas, W
 from directions import DirectionController
 
 def main():
