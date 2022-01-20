@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # Main code for HUD Display
 # Marcus Kok 1/16/22
-
+# [TODO] setup communication between app and phone
 
 import os, sys, getopt
 from directions import DirectionController
