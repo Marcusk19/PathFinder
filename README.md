@@ -1,7 +1,7 @@
-Pathfinder
-========================
+# Pathfinder 
+Code for fetching and displaying directions and obd2 metrics <br />
 
-Structure of this codebase follows best practices recommendations
+Structure of this codebase follows best practices recommendations:
 `Learn more <http://www.kennethreitz.org/essays/repository-structure-and-python>`_.
 
 ---------------
