@@ -1,11 +1,9 @@
 #!/usr/bin/env python3
 # Main code for HUD Display
 # Marcus Kok 1/16/22
-
+# [TODO] setup communication between app and phone
 
 import os, sys, getopt
-import tkinter as tk
-from tkinter import BOTH, Canvas, W
 from directions import DirectionController
 
 def main():

@@ -7,10 +7,9 @@ from pathlib import Path
 from bs4 import BeautifulSoup
 
 # set up of env variables
-dotenv_path = Path('../pathfinder/.env') 
-load_dotenv(dotenv_path=dotenv_path)
-api_key = os.getenv('API_KEY')
+load_dotenv()
 
+api_key = os.getenv('API_KEY')
 
 class DirectionController():
     # FIFO instruction queue
@@ -32,6 +31,7 @@ class DirectionController():
 
         resp = requests.get(url = url, params = params)
         directions = json.loads(resp.text)
+        # print(directions)
         routes = directions['routes']
 
         # Parse json data looking for instructions and maneuvers
