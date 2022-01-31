@@ -3,7 +3,7 @@
 #1/30/2022
 
 import obd
-from obd import OBDStatus
+from obd import OBDStatus as status
 import time
 
 #Attempt to establish a connection and initialize a timer to keep track of wait cycles.
@@ -11,7 +11,7 @@ connection = obd.OBD()
 loopTimer = 0
 
 while True:
-    if connection.status() == ODBStatus.CAR_CONNECTED: #If the car is connected and turned on
+    if connection.status() == status.CAR_CONNECTED: #If the car is connected and turned on
         speedInKilo = connection.query(obd.commands.SPEED) #Queries the speed, object with a value in kilometers per hour.
         fuelPercentage = connection.query(obd.commands.FUEL_LEVEL).value #Returns a % of fuel
         speedInMiles = 0.621371 * speedInKilo.value #converts speed from kilo to miles
