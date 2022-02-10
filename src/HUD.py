@@ -16,14 +16,18 @@ def main():
 
     print("Directions from " + str(input_A) + " to " + str(input_B))
 
+    # initialize instance of DirectionController from directions.py
     controller = DirectionController(locA, locB)
     controller.getDirections()
 
+    # Call handler function to get instructions
     instructions = controller.getInstructions()
     
+    # empty list means directions were unable to be found
     if len(instructions) == 0:
         print("Directions could not be found")
 
+    # print out instruction by instruction
     for instruction in instructions:
         print(instruction)
 

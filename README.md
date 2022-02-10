@@ -45,8 +45,10 @@ View the `example.env` file to see how you should set up your .env file and repl
 
 [TODO]
 ## External Docs ##
+* [Docker](https://docs.docker.com/get-started/ "Getting started")
 * [Tkinter](https://docs.python.org/3/library/tkinter.html "Tkinter docs")
 * [Git contributing](http://www.git-scm.com/book/en/v2/Distributed-Git-Contributing-to-a-Project#Commit-Guidelines "Using git")
 * [Python structuring](https://docs.python-guide.org/writing/structure/ "How to structure python code")
 * [Python testing](https://docs.python-guide.org/writing/tests/ "How to test your code")
 * [BeautifulSoup](https://beautiful-soup-4.readthedocs.io/en/latest/ "BeautifulSoup Documentation")
+* [OBD.py](https://python-obd.readthedocs.io/en/latest/ "OBD python library")
