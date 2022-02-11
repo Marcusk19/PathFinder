@@ -4,18 +4,45 @@
 
 import obd
 from obd import OBDStatus as status
-import time
 
 #Attempt to establish a connection and initialize a timer to keep track of wait cycles.
 class Obd:
+    def __init__(self):
+        print("Attempting to establish connection")
+        obd.logger.setLevel(obd.logging.DEBUG)
+
+        self.connection = obd.OBD(portstr="/dev/tty.OBDII", fast=False, timeout=40)
+        checkpoint = self.connection.status()
+        print("Connection status is: ", checkpoint)
+
+        self.loopTimer = 0
+
+        self.speedInMiles = 0;
 
     def connect():
         print("Attempting to establish connection")
-        obd.logger.setLevel(obd.logging.DEBUG)
         connection = obd.OBD(portstr="/dev/tty.OBDII", fast=False, timeout=40)
         checkpoint = connection.status()
         print("Connection status is: ", checkpoint)
-        loopTimer = 0
+
+    def get_speed(self):
+        if self.connection.status() == status.CAR_CONNECTED: #If the car is connected and turned on
+            speedInKilo = self.connection.query(obd.commands.SPEED) #Queries the speed, object with a value in kilometers per hour.
+            fuelPercentage = self.connection.query(obd.commands.FUEL_LEVEL).value #Returns a % of fuel
+
+            if speedInKilo is None:
+                return "Could not obtain speed"
+            else:
+                self.speedInMiles = 0.621371 * speedInKilo.value  # converts speed from kilo to miles
+                # in the meantime, print results for debugging purposes
+                return self.speedInMiles
+
+    def get_fuel_percentage(self):
+            self.fuelPercentage = self.connection.query(obd.commands.FUEL_LEVEL).value #Returns a % of fuel
+            if self.fuelPercentage is None:
+                return "Could not pull fuel percentage"
+            else:
+                return self.fuelPercentage
 
 # while True:
 #     if connection.status() == status.CAR_CONNECTED: #If the car is connected and turned on
