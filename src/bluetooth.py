@@ -7,8 +7,8 @@ while obd.connection.status() != status.CAR_CONNECTED:
     obd.connect()   #  try reconnect on fail
 
 while obd.connection.status() == status.CAR_CONNECTED:
-    fuel = obd.get_fuel_percentage();
-    speed = obd.get_speed();
+    fuel = obd.get_fuel_percentage()
+    speed = obd.get_speed()
     print("fuel: ", fuel)
     print("speed: ", speed)
 
