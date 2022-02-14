@@ -41,7 +41,7 @@ Due to differences in local environments, it may be necessary to run the code in
 In order to do so you must have docker installed on your machine - follow the instructions [here](https://www.docker.com/get-started) to get started <br />
 Download the Docker Desktop and build the image by running: `docker build -t pathfinder .` <br />
 Check that the image has been created: `docker images` <br />
-Run the program by using: `docker run -it pathfinder python3 src/HUD.py <br />
+Run the program by using: `docker run -it pathfinder python3 src/HUD.py` <br />
 Changes in code can be pushed to the container through: `docker build -t pathfinder:latest .` <br />
 
 ## Setting up your API key ##
