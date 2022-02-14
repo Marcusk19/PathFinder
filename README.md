@@ -29,7 +29,7 @@ Install dependencies with:
 `pip install -r requirements.txt` <br />
 Then execute binary:
 `python src/HUD.py` <br />
-Navigate to *pfnder.ddns.net* <br />
+Navigate to [*http://pfnder.ddns.net*](http://pfnder.ddns.net) <br />
 ![website](readme_images/website.png "pfnder.ddns.net")
 From there you can enter a source and destination <br />
 Go back to console and observe output: <br />
