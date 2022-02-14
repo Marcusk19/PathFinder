@@ -28,7 +28,12 @@ To run code first enter working directory:
 Install dependencies with:
 `pip install -r requirements.txt` <br />
 Then execute binary:
-`python src/HUD.py "ORIGIN" "DESTINATION"` <br />
+`python src/HUD.py` <br />
+Navigate to *pfnder.ddns.net* <br />
+![website](readme_images/website.png "pfnder.ddns.net")
+From there you can enter a source and destination <br />
+Go back to console and observe output: <br />
+![output](readme_images/terminal_output.png "terminal output")
 
 ## Running in a container ##
 
@@ -36,7 +41,7 @@ Due to differences in local environments, it may be necessary to run the code in
 In order to do so you must have docker installed on your machine - follow the instructions [here](https://www.docker.com/get-started) to get started <br />
 Download the Docker Desktop and build the image by running: `docker build -t pathfinder .` <br />
 Check that the image has been created: `docker images` <br />
-Run the program by using: `docker run -it pathfinder python3 src/HUD.py 'POINT_A' 'POINT_B'` <br />
+Run the program by using: `docker run -it pathfinder python3 src/HUD.py <br />
 Changes in code can be pushed to the container through: `docker build -t pathfinder:latest .` <br />
 
 ## Setting up your API key ##
