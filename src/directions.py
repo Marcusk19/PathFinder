@@ -14,14 +14,15 @@ api_key = os.getenv('API_KEY')
 
 class DirectionController():
     # FIFO instruction queue
+    """ queue to hold all the instructions"""
     instruction_queue = []
 
     def __init__(self, pointA, pointB):
         self.user_origin = pointA
         self.user_destination = pointB
 
-    # Handler function to retrieve directions from Google api
     def getDirections(self):
+        """ function to retrieve directions from Google api """
         url = 'https://maps.googleapis.com/maps/api/directions/json'
         # define parameters for http request
         params = dict(
@@ -50,6 +51,7 @@ class DirectionController():
         return directions
 
     def getInstructions(self):
+        """ returns directions.instruction_queue """
         return self.instruction_queue
 
         
