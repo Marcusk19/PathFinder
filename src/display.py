@@ -75,7 +75,7 @@ class Display():
                 testfont = ImageFont.truetype("/usr/share/fonts/truetype/msttcorefont/Georgia.ttf", 8)
                 top = -2
                 for i in range (0, 4):
-                        self.draw.text((0, (top + i*8)), lines[i].join(" "), font=testfont, fill=255)
+                        self.draw.text((0, (top + i*8)), ' '.join(lines[i]), font=testfont, fill=255)
                 
                 self.refresh()
   
