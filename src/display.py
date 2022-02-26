@@ -64,15 +64,15 @@ class Display():
                 if(len(words) % 4 == 0):
                         for i in range (0, 4):
                                 lines.append(words[int(prev):int(prev+wpl)])
-                                prev = i+wpl # increment prev
+                                prev = prev+wpl # increment prev
                 else:
                         for i in range (0,3):
                                 lines.append(words[int(prev):int(prev+wpl)])
-                                prev = i+wpl # increment prev
+                                prev = prev+wpl # increment prev
                         lines.append(words[int(prev):int(prev+wpl + (len(words)%4))])
 
                 self.clear_disp() # clear display for words
-                testfont = ImageFont.truetype("/usr/share/fonts/truetype/msttcorefont/Georgia.ttf", 8)
+                testfont = ImageFont.truetype("/usr/share/fonts/truetype/msttcorefont/Georgia.ttf", 10)
                 top = -2
                 for i in range (0, 4):
                         self.draw.text((0, (top + i*8)), ' '.join(lines[i]), font=testfont, fill=255)
