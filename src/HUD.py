@@ -8,6 +8,7 @@ from ast import While
 import os, sys, getopt
 from directions import DirectionController
 import paho.mqtt.client as mqtt
+import display
 
 inputA = ""
 inputB = ""
@@ -15,8 +16,8 @@ client = mqtt.Client() # instance of Client object
 
 def main():
     MQTT_SERVER = "45.56.117.102" # ip address of linode instance
-
     
+
     client.on_connect = on_connect # override methods
     client.on_message = on_message
 
@@ -67,6 +68,8 @@ def pull_directions():
     controller = DirectionController(locA, locB)
     controller.getDirections()
 
+    screen = display.Display(); # instance of display
+
     # Call handler function to get instructions
     instructions = controller.getInstructions()
     
@@ -77,6 +80,8 @@ def pull_directions():
     # print out instruction by instruction
     for instruction in instructions:
         print(instruction)
+
+    screen.show_direction(instructions[0])
     
 
 main()
