@@ -59,9 +59,9 @@ class Display():
         def show_direction(self, text):
                 words = text.split()
                 lines = []
-                wpl = words.len() / 4
+                wpl = len(words) / 4
                 prev = 0 # save prev index for iteration
-                if(words.len() % 4 == 0):
+                if(len(words) % 4 == 0):
                         for i in range (0, 4):
                                 lines[i] = words[prev:i+wpl]
                                 prev = i+wpl # increment prev
@@ -69,7 +69,7 @@ class Display():
                         for i in range (0,3):
                                 lines[i] = words[prev:i+wpl]
                                 prev = i+wpl # increment prev
-                        lines[3] = words[prev:prev+wpl + words.len()%4]
+                        lines[3] = words[prev:prev+wpl + len(words)%4]
 
                 self.clear_disp() # clear display for words
                 testfont = ImageFont.truetype("/usr/share/fonts/truetype/msttcorefont/Georgia.ttf", 8)

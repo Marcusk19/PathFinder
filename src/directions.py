@@ -1,7 +1,6 @@
 # Controller for directions
 # Marcus Kok 1/16/22
 
-from asyncio.windows_events import NULL
 import json, html, requests
 import os
 from dotenv import load_dotenv
@@ -17,8 +16,7 @@ class DirectionController():
     # FIFO instruction queue
     """ queue to hold all the instructions"""
     instruction_queue = []
-    maneuver_queue = []
-
+    
     def __init__(self, pointA, pointB):
         self.user_origin = pointA
         self.user_destination = pointB
@@ -49,10 +47,6 @@ class DirectionController():
                     ins_html = BeautifulSoup(step['html_instructions'], 'html.parser') 
                     instruction = ins_html.get_text()
                     self.instruction_queue.append(instruction)
-
-                    maneuver = step['maneuver']
-                    if(maneuver.len == 0): maneuver = "continue"
-                    self.maneuver_queue.append(maneuver)
 
         
         return directions
