@@ -63,13 +63,13 @@ class Display():
                 prev = 0 # save prev index for iteration
                 if(len(words) % 4 == 0):
                         for i in range (0, 4):
-                                lines[i] = words[int(prev):int(i+wpl)]
+                                lines.append(words[int(prev):int(prev+wpl)])
                                 prev = i+wpl # increment prev
                 else:
                         for i in range (0,3):
-                                lines[i] = words[int(prev):int(i+wpl)]
+                                lines.append(words[int(prev):int(prev+wpl)])
                                 prev = i+wpl # increment prev
-                        lines[3] = words[int(prev):int(prev+wpl + (len(words)%4))]
+                        lines.append(words[int(prev):int(prev+wpl + (len(words)%4))])
 
                 self.clear_disp() # clear display for words
                 testfont = ImageFont.truetype("/usr/share/fonts/truetype/msttcorefont/Georgia.ttf", 8)
