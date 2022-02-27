@@ -1,16 +1,12 @@
 # Pathfinder 
 Code for fetching and displaying directions and obd2 metrics <br />
 
-Structure of this codebase follows best practices recommendations:
-`Learn more <http://www.kennethreitz.org/essays/repository-structure-and-python>`_.
 
 ---------------
 
-If you want to learn more about ``setup.py`` files, check out `this repository <https://github.com/kennethreitz/setup.py>`_.
-
 ## Structure ##
 Breakdown of file structure: <br />
-* **docs** - contains documentation (not used yet)
+* **docs** - contains documentation for codebase
 * **sample** - contains sample code from GitHub used for structuring this repo
 * **src** - most important directory, contains code for PathFinder
 * **target** - not sure what this one is for yet
