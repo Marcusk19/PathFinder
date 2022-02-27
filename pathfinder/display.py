@@ -1,4 +1,9 @@
 #!/usr/bin/env python
+"""
+Display Module
+------------------
+This is a module to control the OLED display for the PathFinder.
+"""
 import math
 import time
 import subprocess
@@ -8,7 +13,19 @@ import busio
 import adafruit_ssd1306
 
 class Display():
+        """ Base class for display.
+        Defines the basic properties of the display plus methods used
+        to update an OLED display using I2C interface with text output. 
+
+        Attributes
+        ----------
+        i2c:
+                Defines bus supported I2C protocol.
+        disp:
+                Object represented from adafruit OLED display drivers
+        """
         def __init__(self):
+                """ initializes i2c interface, display, and window """
                 i2c = busio.I2C(SCL, SDA)
                 self.disp = adafruit_ssd1306.SSD1306_I2C(128, 32, i2c)
                 self.disp.fill(0)
@@ -22,17 +39,29 @@ class Display():
         # Create blank image for drawing.
         # Make sure to create image with mode '1' for 1-bit color.
 
+        
         def clear_disp(self):
+                """ Clears the display image
+                """
                 # Draw a black filled box to clear the image.
                 self.draw.rectangle((0, 0, self.width, self.height), outline=0, fill=0)
                 self.refresh()
         
         def refresh(self):
+                """ Refreshes the display to show a new image. 
+                Specifically places image in display and calls
+                disp.show() to present the image.
+                """
                 self.disp.image(self.image)
                 self.disp.show() 
 
 
         def show_text(self, text="not available"):
+                """ 
+                Shows line of text
+                Args:
+                        text (string): text to put on display, defaults to 'not available'
+                """
                 self.clear_disp()
                 # Load default font.
                 
@@ -57,6 +86,11 @@ class Display():
                 self.refresh()
         
         def show_direction(self, text):
+                """ 
+                Takes instruction input and splits into 4 lines for display
+                Args:
+                        text (string): String containing instruction.
+                """
                 words = text.split()
                 lines = []
                 wpl = len(words) / 4
@@ -78,9 +112,3 @@ class Display():
                         self.draw.text((0, (top + i*8)), ' '.join(lines[i]), font=testfont, fill=255)
                 
                 self.refresh()
-  
-
-                
-                
-
-

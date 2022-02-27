@@ -1,6 +1,6 @@
-from context import src
+from context import pathfinder
 
-from src import directions
+from pathfinder import directions
 import unittest, os
 
 path = os.environ.get('PARENT_DIR')

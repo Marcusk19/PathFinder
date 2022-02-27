@@ -1,6 +1,15 @@
 # Controller for directions
 # Marcus Kok 1/16/22
+""" This is a module for getting directions using Google Places api.
 
+Handles all the direction requests and data acquisition for driving instructions.
+Utilizes the Google Places API in to gather data.
+
+    Typical usage example:
+    
+    dirC = new DirectionController("pointA", "pointB")
+    dirC.getDirections()
+"""
 import json, html, requests
 import os
 from dotenv import load_dotenv
@@ -9,20 +18,44 @@ from bs4 import BeautifulSoup
 
 # set up of env variables
 load_dotenv()
-
 api_key = os.getenv('API_KEY')
 
 class DirectionController():
-    # FIFO instruction queue
-    """ queue to hold all the instructions"""
-    instruction_queue = []
+    """ Base class for the Direction Controller.
     
+    Defines the methods to fetch and store directions using Google Places API.
+
+    Attributes
+    ----------
+    user_origin:
+        Starting origin point defined by user.
+    user_destination:
+        Final desitnation point defined by user.
+    instruction_queue:
+        List of instructions obtained from API given source and destination.
+
+    Notes
+    -----
+    It is critically important that you call getDirections() method first
+    before getInstructions() when using this class. The getDirections() method
+    fills the instruction_queue which can then be returned by getInstructions().
+    Otherwise you will be returning an empty list.
+    """
+    # FIFO instruction queue
+    
+    instruction_queue = []
+
     def __init__(self, pointA, pointB):
         self.user_origin = pointA
         self.user_destination = pointB
 
     def getDirections(self):
-        """ function to retrieve directions from Google api """
+        """ Grabs directions from Google API and puts them in
+        instruction_queue
+
+        Returns:
+            string: Text output of json response.
+        """
         url = 'https://maps.googleapis.com/maps/api/directions/json'
         # define parameters for http request
         params = dict(
@@ -52,10 +85,15 @@ class DirectionController():
         return directions
 
     def getInstructions(self):
-        """ returns directions.instruction_queue """
+        """ Returns directions.instruction_queue (should be called after getDirections).
+
+        Returns: 
+            list: list of all instructions 
+        """
         return self.instruction_queue
     
     def getManeuvers(self):
+        # not used yet
         return self.maneuver_queue
 
         
