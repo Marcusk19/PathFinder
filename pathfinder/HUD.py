@@ -1,14 +1,17 @@
 #!/usr/bin/env python3
 # Main code for HUD Display
 # Marcus Kok 1/16/22
-""" Main module for running PathFinder software.
+""" 
+HUD Module
+----------
+
+Main module for running PathFinder software.
 
 This module calls from display, directions, and OBD to 
 put together fucntionality for the PathFinder project.
-Contains the main method to run. Called from the commandline.
+Furthermore, it acts as a MQTT client subscribed to the
+broker listening to channels 'source' and 'destination'
 
-Attributes:
------------
 inputA:
     String representation of source point for PathFinder.
 inputB:
@@ -16,7 +19,7 @@ inputB:
 client:
     Instance of mqtt.Client() object for subscribing to the MQTT broker.
 
-    Typical usage example:
+Typical usage example:
     
     python3 pathfinder/HUD.py
 """
@@ -81,7 +84,8 @@ def on_message(client, userdata, msg):
 
 # mqtt msg.payload comes in as b'message'
 def on_source(client, userdata, msg):
-    """ Defines what should happen upon receiving a source point.
+    """ Defines what should happen upon receiving a message published
+    on the 'source' channel.
     Formats message payload and saves to local variable inputA.
 
     Args:
@@ -95,7 +99,8 @@ def on_source(client, userdata, msg):
     print("inputA = " + inputA)
 
 def on_dest(client, userdata, msg):
-    """ Defines what should happen upon receiving a destination.
+    """ Defines what should happen upon receiving a message published
+    on the 'destination' channel.
     Formats message payload anad saves to local variable inputB.
 
     Args:

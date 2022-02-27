@@ -2,7 +2,11 @@
 """
 Display Module
 ------------------
-This is a module to control the OLED display for the PathFinder.
+This is a module to control the OLED display for the PathFinder via I2C protocol.
+
+Typical usage example:
+        screen = display.Display()
+        screen.showDirection("Turn left on 1111 Pathfinder ln")
 """
 import math
 import time

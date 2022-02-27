@@ -2,6 +2,9 @@
 #Jackson
 #1/30/2022
 """
+OBD Module
+----------
+
 Main module for OBD metric ingestion.
 
 Module creates connection to bluetooth OBDII transmitter
@@ -10,7 +13,6 @@ and returns measurement values from it.
 Notes
 -----
 Work in progress
-
 """
 import obd
 from obd import OBDStatus as status

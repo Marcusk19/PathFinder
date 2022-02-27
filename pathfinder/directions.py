@@ -1,12 +1,16 @@
 # Controller for directions
 # Marcus Kok 1/16/22
-""" This is a module for getting directions using Google Places api.
+""" 
+Directions Module
+-----------------
 
-Handles all the direction requests and data acquisition for driving instructions.
-Utilizes the Google Places API in to gather data.
+This is a module handles all the direction requests and data acquisition for driving instructions.
+Uses the Google Places API to gather instruction data.
 
+Attributes
+----------
     Typical usage example:
-    
+
     dirC = new DirectionController("pointA", "pointB")
     dirC.getDirections()
 """
@@ -50,8 +54,8 @@ class DirectionController():
         self.user_destination = pointB
 
     def getDirections(self):
-        """ Grabs directions from Google API and puts them in
-        instruction_queue
+        """ Makes an HTTP request to the Google API endpoint and parses through
+        the JSON response to obtain a list of instructions.
 
         Returns:
             string: Text output of json response.
@@ -85,7 +89,7 @@ class DirectionController():
         return directions
 
     def getInstructions(self):
-        """ Returns directions.instruction_queue (should be called after getDirections).
+        """ Returns directions.instruction_queue (should be called after .getDirections()).
 
         Returns: 
             list: list of all instructions 
@@ -93,6 +97,11 @@ class DirectionController():
         return self.instruction_queue
     
     def getManeuvers(self):
+        """ Returns list of maneuvers parsed from JSON response after calling .getDirections().
+
+        Returns:
+            list: list of all maneuvers
+        """
         # not used yet
         return self.maneuver_queue
 
