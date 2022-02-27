@@ -47,6 +47,7 @@ View the `example.env` file to see how you should set up your .env file and repl
 [TODO]
 ## External Docs ##
 * [Source code for pfnder.ddns.net](https://github.com/Marcusk19/MQTT-web-app "webapp")
+* [PathFinder documentation](https://marcusk19.github.io/PathFinder/pathfinder.html#submodules "read the docs")
 * [Docker](https://docs.docker.com/get-started/ "Getting started")
 * [Tkinter](https://docs.python.org/3/library/tkinter.html "Tkinter docs")
 * [Git contributing](http://www.git-scm.com/book/en/v2/Distributed-Git-Contributing-to-a-Project#Commit-Guidelines "Using git")
