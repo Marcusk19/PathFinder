@@ -74,8 +74,7 @@ def on_message(client, userdata, msg):
 
     Args:
         client (client): Instance of client class.
-        userdata (userdata): User provided object passed onto on_message callback when
-        message is received.
+        userdata (userdata): User provided object passed onto on_message callback when a message is received.
         msg (msg): Message class from the broker.
     """
     print("msg topic: " + str(msg.payload))
@@ -101,8 +100,7 @@ def on_dest(client, userdata, msg):
 
     Args:
         client (client): MQTT client class instance.
-        userdata (userdata): A user provided object passed to the on_message callback
-        when a message is received.
+        userdata (userdata): A user provided object passed to the on_message callback when a message is received.
         msg (msg): Message class from the broker.
     """
     global inputB, inputA
