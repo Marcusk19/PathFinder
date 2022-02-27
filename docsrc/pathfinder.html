@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>pathfinder package &mdash; PathFinder 0.1.0 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="pathfinder" href="modules.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> PathFinder
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">pathfinder</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">pathfinder package</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#submodules">Submodules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-pathfinder.HUD">pathfinder.HUD module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#attributes">Attributes:</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-pathfinder.OBD">pathfinder.OBD module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-pathfinder.directions">pathfinder.directions module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-pathfinder.display">pathfinder.display module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#display-module">Display Module</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-pathfinder">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">PathFinder</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="modules.html">pathfinder</a> &raquo;</li>
+      <li>pathfinder package</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/pathfinder.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="pathfinder-package">
+<h1>pathfinder package<a class="headerlink" href="#pathfinder-package" title="Permalink to this headline"></a></h1>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline"></a></h2>
+</section>
+<section id="module-pathfinder.HUD">
+<span id="pathfinder-hud-module"></span><h2>pathfinder.HUD module<a class="headerlink" href="#module-pathfinder.HUD" title="Permalink to this headline"></a></h2>
+<p>Main module for running PathFinder software.</p>
+<p>This module calls from display, directions, and OBD to
+put together fucntionality for the PathFinder project.
+Contains the main method to run. Called from the commandline.</p>
+<section id="attributes">
+<h3>Attributes:<a class="headerlink" href="#attributes" title="Permalink to this headline"></a></h3>
+<dl>
+<dt>inputA:</dt><dd><p>String representation of source point for PathFinder.</p>
+</dd>
+<dt>inputB:</dt><dd><p>String representation of destination point for PathFinder.</p>
+</dd>
+<dt>client:</dt><dd><p>Instance of mqtt.Client() object for subscribing to the MQTT broker.</p>
+<p>Typical usage example:</p>
+<p>python3 pathfinder/HUD.py</p>
+</dd>
+</dl>
+<dl class="py function">
+<dt class="sig sig-object py" id="pathfinder.HUD.main">
+<span class="sig-prename descclassname"><span class="pre">pathfinder.HUD.</span></span><span class="sig-name descname"><span class="pre">main</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pathfinder.HUD.main" title="Permalink to this definition"></a></dt>
+<dd><p>Main function of PathFinder project. Sets up connection to
+MQTT broker and calls functions defined below.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pathfinder.HUD.on_connect">
+<span class="sig-prename descclassname"><span class="pre">pathfinder.HUD.</span></span><span class="sig-name descname"><span class="pre">on_connect</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">userdata</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">flags</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rc</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pathfinder.HUD.on_connect" title="Permalink to this definition"></a></dt>
+<dd><p>The callback for when the client recieves a CONNACK response from the server.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>client</strong> (<em>client</em>) – The client instance for this callback.</p></li>
+<li><p><strong>userdata</strong> (<em>userdata</em>) – The private user data set in Client() or user_data_set().</p></li>
+<li><p><strong>flags</strong> (<em>flags</em>) – Response flags sent by the broker.</p></li>
+<li><p><strong>rc</strong> (<em>rc</em>) – The connection result.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pathfinder.HUD.on_dest">
+<span class="sig-prename descclassname"><span class="pre">pathfinder.HUD.</span></span><span class="sig-name descname"><span class="pre">on_dest</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">userdata</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">msg</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pathfinder.HUD.on_dest" title="Permalink to this definition"></a></dt>
+<dd><p>Defines what should happen upon receiving a destination.
+Formats message payload anad saves to local variable inputB.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>client</strong> (<em>client</em>) – MQTT client class instance.</p></li>
+<li><p><strong>userdata</strong> (<em>userdata</em>) – A user provided object passed to the on_message callback</p></li>
+<li><p><strong>received.</strong> (<em>when a message is</em>) – </p></li>
+<li><p><strong>msg</strong> (<em>msg</em>) – Message class from the broker.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pathfinder.HUD.on_message">
+<span class="sig-prename descclassname"><span class="pre">pathfinder.HUD.</span></span><span class="sig-name descname"><span class="pre">on_message</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">userdata</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">msg</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pathfinder.HUD.on_message" title="Permalink to this definition"></a></dt>
+<dd><p>Callback function that happens when subscriber client receives message
+from broker.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>client</strong> (<em>client</em>) – Instance of client class.</p></li>
+<li><p><strong>userdata</strong> (<em>userdata</em>) – User provided object passed onto on_message callback when</p></li>
+<li><p><strong>received.</strong> (<em>message is</em>) – </p></li>
+<li><p><strong>msg</strong> (<em>msg</em>) – Message class from the broker.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pathfinder.HUD.on_source">
+<span class="sig-prename descclassname"><span class="pre">pathfinder.HUD.</span></span><span class="sig-name descname"><span class="pre">on_source</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">userdata</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">msg</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pathfinder.HUD.on_source" title="Permalink to this definition"></a></dt>
+<dd><p>Defines what should happen upon receiving a source point.
+Formats message payload and saves to local variable inputA.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>client</strong> (<em>client</em>) – MQTT client class instance.</p></li>
+<li><p><strong>userdata</strong> (<em>userdata</em>) – A user provided object passed to the on_message callback.</p></li>
+<li><p><strong>msg</strong> (<em>msg</em>) – Message class from the broker.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pathfinder.HUD.pull_directions">
+<span class="sig-prename descclassname"><span class="pre">pathfinder.HUD.</span></span><span class="sig-name descname"><span class="pre">pull_directions</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pathfinder.HUD.pull_directions" title="Permalink to this definition"></a></dt>
+<dd><p>Method instantiates a DirectionController and Display instance.
+Calls getDirections() and getInstructions from DirectionController then
+formats them for Display.</p>
+</dd></dl>
+
+</section>
+</section>
+<section id="module-pathfinder.OBD">
+<span id="pathfinder-obd-module"></span><h2>pathfinder.OBD module<a class="headerlink" href="#module-pathfinder.OBD" title="Permalink to this headline"></a></h2>
+<p>Main module for OBD metric ingestion.</p>
+<p>Module creates connection to bluetooth OBDII transmitter
+and returns measurement values from it.</p>
+<p class="rubric">Notes</p>
+<p>Work in progress</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="pathfinder.OBD.Obd">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pathfinder.OBD.</span></span><span class="sig-name descname"><span class="pre">Obd</span></span><a class="headerlink" href="#pathfinder.OBD.Obd" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="pathfinder.OBD.Obd.connect">
+<span class="sig-name descname"><span class="pre">connect</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pathfinder.OBD.Obd.connect" title="Permalink to this definition"></a></dt>
+<dd><p>Method to initialize a connection to OBDII transmitter.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pathfinder.OBD.Obd.get_fuel_percentage">
+<span class="sig-name descname"><span class="pre">get_fuel_percentage</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pathfinder.OBD.Obd.get_fuel_percentage" title="Permalink to this definition"></a></dt>
+<dd><p>Method to return the fuel percentage detected from OBDII transmitter.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Fuel percentage.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>var</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pathfinder.OBD.Obd.get_speed">
+<span class="sig-name descname"><span class="pre">get_speed</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pathfinder.OBD.Obd.get_speed" title="Permalink to this definition"></a></dt>
+<dd><p>Method to return the speed in miles per hour detected from the OBDII transmitter.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Speed in miles per hour.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>var</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-pathfinder.directions">
+<span id="pathfinder-directions-module"></span><h2>pathfinder.directions module<a class="headerlink" href="#module-pathfinder.directions" title="Permalink to this headline"></a></h2>
+<p>This is a module for getting directions using Google Places api.</p>
+<p>Handles all the direction requests and data acquisition for driving instructions.
+Utilizes the Google Places API in to gather data.</p>
+<blockquote>
+<div><p>Typical usage example:</p>
+<p>dirC = new DirectionController(“pointA”, “pointB”)
+dirC.getDirections()</p>
+</div></blockquote>
+<dl class="py class">
+<dt class="sig sig-object py" id="pathfinder.directions.DirectionController">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pathfinder.directions.</span></span><span class="sig-name descname"><span class="pre">DirectionController</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pointA</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pointB</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pathfinder.directions.DirectionController" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Base class for the Direction Controller.</p>
+<p>Defines the methods to fetch and store directions using Google Places API.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pathfinder.directions.DirectionController.user_origin">
+<span class="sig-name descname"><span class="pre">user_origin</span></span><a class="headerlink" href="#pathfinder.directions.DirectionController.user_origin" title="Permalink to this definition"></a></dt>
+<dd><p>Starting origin point defined by user.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pathfinder.directions.DirectionController.user_destination">
+<span class="sig-name descname"><span class="pre">user_destination</span></span><a class="headerlink" href="#pathfinder.directions.DirectionController.user_destination" title="Permalink to this definition"></a></dt>
+<dd><p>Final desitnation point defined by user.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pathfinder.directions.DirectionController.instruction_queue">
+<span class="sig-name descname"><span class="pre">instruction_queue</span></span><a class="headerlink" href="#pathfinder.directions.DirectionController.instruction_queue" title="Permalink to this definition"></a></dt>
+<dd><p>List of instructions obtained from API given source and destination.</p>
+</dd></dl>
+
+<p class="rubric">Notes</p>
+<p>It is critically important that you call getDirections() method first
+before getInstructions() when using this class. The getDirections() method
+fills the instruction_queue which can then be returned by getInstructions().
+Otherwise you will be returning an empty list.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="pathfinder.directions.DirectionController.getDirections">
+<span class="sig-name descname"><span class="pre">getDirections</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pathfinder.directions.DirectionController.getDirections" title="Permalink to this definition"></a></dt>
+<dd><p>Grabs directions from Google API and puts them in
+instruction_queue</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Text output of json response.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>string</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pathfinder.directions.DirectionController.getInstructions">
+<span class="sig-name descname"><span class="pre">getInstructions</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pathfinder.directions.DirectionController.getInstructions" title="Permalink to this definition"></a></dt>
+<dd><p>Returns directions.instruction_queue (should be called after getDirections).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>list of all instructions</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pathfinder.directions.DirectionController.getManeuvers">
+<span class="sig-name descname"><span class="pre">getManeuvers</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pathfinder.directions.DirectionController.getManeuvers" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id0">
+<span class="sig-name descname"><span class="pre">instruction_queue</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">[]</span></em><a class="headerlink" href="#id0" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-pathfinder.display">
+<span id="pathfinder-display-module"></span><h2>pathfinder.display module<a class="headerlink" href="#module-pathfinder.display" title="Permalink to this headline"></a></h2>
+<section id="display-module">
+<h3>Display Module<a class="headerlink" href="#display-module" title="Permalink to this headline"></a></h3>
+<p>This is a module to control the OLED display for the PathFinder.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="pathfinder.display.Display">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pathfinder.display.</span></span><span class="sig-name descname"><span class="pre">Display</span></span><a class="headerlink" href="#pathfinder.display.Display" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Base class for display.
+Defines the basic properties of the display plus methods used
+to update an OLED display using I2C interface with text output.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pathfinder.display.Display.i2c">
+<span class="sig-name descname"><span class="pre">i2c</span></span><a class="headerlink" href="#pathfinder.display.Display.i2c" title="Permalink to this definition"></a></dt>
+<dd><p>Defines bus supported I2C protocol.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pathfinder.display.Display.disp">
+<span class="sig-name descname"><span class="pre">disp</span></span><a class="headerlink" href="#pathfinder.display.Display.disp" title="Permalink to this definition"></a></dt>
+<dd><p>Object represented from adafruit OLED display drivers</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pathfinder.display.Display.clear_disp">
+<span class="sig-name descname"><span class="pre">clear_disp</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pathfinder.display.Display.clear_disp" title="Permalink to this definition"></a></dt>
+<dd><p>Clears the display image</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pathfinder.display.Display.refresh">
+<span class="sig-name descname"><span class="pre">refresh</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pathfinder.display.Display.refresh" title="Permalink to this definition"></a></dt>
+<dd><p>Refreshes the display to show a new image.
+Specifically places image in display and calls
+disp.show() to present the image.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pathfinder.display.Display.show_direction">
+<span class="sig-name descname"><span class="pre">show_direction</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pathfinder.display.Display.show_direction" title="Permalink to this definition"></a></dt>
+<dd><p>Takes instruction input and splits into 4 lines for display
+:param text: String containing instruction.
+:type text: string</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pathfinder.display.Display.show_text">
+<span class="sig-name descname"><span class="pre">show_text</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'not</span> <span class="pre">available'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pathfinder.display.Display.show_text" title="Permalink to this definition"></a></dt>
+<dd><p>Shows line of text
+:param text: text to put on display, defaults to ‘not available’
+:type text: string</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+</section>
+<section id="module-pathfinder">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-pathfinder" title="Permalink to this headline"></a></h2>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="modules.html" class="btn btn-neutral float-left" title="pathfinder" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, Marcus Kok, Jackson Norris.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
