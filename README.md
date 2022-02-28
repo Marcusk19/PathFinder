@@ -1,6 +1,7 @@
 # Pathfinder 
 Code for fetching and displaying directions and obd2 metrics <br />
 
+## [PathFinder documentation](https://marcusk19.github.io/PathFinder/pathfinder.html#submodules "read the docs") ## 
 
 ---------------
 
