@@ -6,7 +6,6 @@ This is a module to control the OLED display for the PathFinder via I2C protocol
 
 Typical usage example:
         screen = display.Display()
-        screen.showDirection("Turn left on 1111 Pathfinder ln")
 """
 import math
 import time
@@ -63,6 +62,7 @@ class Display():
         def show_text(self, text="not available"):
                 """ 
                 Shows line of text
+
                 Args:
                         text (string): text to put on display, defaults to 'not available'
                 """
@@ -92,6 +92,7 @@ class Display():
         def show_direction(self, text):
                 """ 
                 Takes instruction input and splits into 4 lines for display
+                
                 Args:
                         text (string): String containing instruction.
                 """

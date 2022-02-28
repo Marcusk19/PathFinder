@@ -11,8 +11,7 @@ Attributes
 ----------
     Typical usage example:
 
-    dirC = new DirectionController("pointA", "pointB")
-    dirC.getDirections()
+        dirC = new DirectionController("pointA", "pointB")
 """
 import json, html, requests
 import os

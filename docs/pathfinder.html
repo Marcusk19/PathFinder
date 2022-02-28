@@ -256,17 +256,8 @@ Uses the Google Places API to gather instruction data.</p>
 <dl class="py attribute">
 <dt class="sig sig-object py">
 <span class="sig-name descname"><span class="pre">Typical</span> <span class="pre">usage</span> <span class="pre">example</span></span></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py">
-<span class="sig-name descname"><span class="pre">dirC</span> <span class="pre">=</span> <span class="pre">new</span> <span class="pre">DirectionController(&quot;pointA&quot;,</span> <span class="pre">&quot;pointB&quot;)</span></span></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="pathfinder.directions.dirC.getDirections">
-<span class="sig-prename descclassname"><span class="pre">dirC.</span></span><span class="sig-name descname"><span class="pre">getDirections</span></span><a class="headerlink" href="#pathfinder.directions.dirC.getDirections" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>dirC = new DirectionController(“pointA”, “pointB”)</p>
+</dd></dl>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="pathfinder.directions.DirectionController">
@@ -355,8 +346,7 @@ the JSON response to obtain a list of instructions.</p>
 <h3>Display Module<a class="headerlink" href="#display-module" title="Permalink to this headline"></a></h3>
 <p>This is a module to control the OLED display for the PathFinder via I2C protocol.</p>
 <dl class="simple">
-<dt>Typical usage example:</dt><dd><p>screen = display.Display()
-screen.showDirection(“Turn left on 1111 Pathfinder ln”)</p>
+<dt>Typical usage example:</dt><dd><p>screen = display.Display()</p>
 </dd>
 </dl>
 <dl class="py class">
@@ -395,17 +385,23 @@ disp.show() to present the image.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="pathfinder.display.Display.show_direction">
 <span class="sig-name descname"><span class="pre">show_direction</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pathfinder.display.Display.show_direction" title="Permalink to this definition"></a></dt>
-<dd><p>Takes instruction input and splits into 4 lines for display
-:param text: String containing instruction.
-:type text: string</p>
+<dd><p>Takes instruction input and splits into 4 lines for display</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>text</strong> (<em>string</em>) – String containing instruction.</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pathfinder.display.Display.show_text">
 <span class="sig-name descname"><span class="pre">show_text</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'not</span> <span class="pre">available'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pathfinder.display.Display.show_text" title="Permalink to this definition"></a></dt>
-<dd><p>Shows line of text
-:param text: text to put on display, defaults to ‘not available’
-:type text: string</p>
+<dd><p>Shows line of text</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>text</strong> (<em>string</em>) – text to put on display, defaults to ‘not available’</p>
+</dd>
+</dl>
 </dd></dl>
 
 </dd></dl>
