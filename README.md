@@ -44,6 +44,10 @@ Changes in code can be pushed to the container through: `docker build -t pathfin
 Follow this guide [here](https://developers.google.com/maps/documentation/directions/quickstart "Google Directions") to get setup with a Google developer account and obtain your api key.<br />
 View the `example.env` file to see how you should set up your .env file and replace `my_api_key` with the api key you received from Google. <br /> 
 
+## Messaging System ##
+Code uses MQTT messaging protocol to send and receive information. Depicted below is the flow of data for the PathFinder: <br />
+![diagram](readme_images/mqtt.jpg "information flow")
+
 [TODO]
 ## External Docs ##
 * [Source code for pfnder.ddns.net](https://github.com/Marcusk19/MQTT-web-app "webapp")

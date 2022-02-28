@@ -202,31 +202,24 @@ formats them for Display.</p>
 <span id="pathfinder-obd-module"></span><h2>pathfinder.OBD module<a class="headerlink" href="#module-pathfinder.OBD" title="Permalink to this headline"></a></h2>
 <section id="obd-module">
 <h3>OBD Module<a class="headerlink" href="#obd-module" title="Permalink to this headline"></a></h3>
-<p>Main module for OBD metric ingestion.</p>
-<p>Module creates connection to bluetooth OBDII transmitter
-and returns measurement values from it.</p>
-<p class="rubric">Notes</p>
-<p>Work in progress</p>
+<p>Functions as connectivity between the HUD and OBDII bluetooth transmitter.</p>
+<p>Establishes a connection to the bluetooth adapter and gathers measurements such
+as speed and fuel percentage. When it first forms a connection the code has to
+loop multiple times to pull all instructions.</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="pathfinder.OBD.Obd">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pathfinder.OBD.</span></span><span class="sig-name descname"><span class="pre">Obd</span></span><a class="headerlink" href="#pathfinder.OBD.Obd" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <dl class="py method">
-<dt class="sig sig-object py" id="pathfinder.OBD.Obd.connect">
-<span class="sig-name descname"><span class="pre">connect</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pathfinder.OBD.Obd.connect" title="Permalink to this definition"></a></dt>
-<dd><p>Method to initialize a connection to OBDII transmitter.</p>
-</dd></dl>
-
-<dl class="py method">
 <dt class="sig sig-object py" id="pathfinder.OBD.Obd.get_fuel_percentage">
 <span class="sig-name descname"><span class="pre">get_fuel_percentage</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pathfinder.OBD.Obd.get_fuel_percentage" title="Permalink to this definition"></a></dt>
-<dd><p>Method to return the fuel percentage detected from OBDII transmitter.</p>
+<dd><p>Queries fuel % of car is connected</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>Fuel percentage.</p>
+<dd class="field-odd"><p>fuel percentage</p>
 </dd>
 <dt class="field-even">Return type</dt>
-<dd class="field-even"><p>var</p>
+<dd class="field-even"><p>string</p>
 </dd>
 </dl>
 </dd></dl>
@@ -234,18 +227,23 @@ and returns measurement values from it.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="pathfinder.OBD.Obd.get_speed">
 <span class="sig-name descname"><span class="pre">get_speed</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pathfinder.OBD.Obd.get_speed" title="Permalink to this definition"></a></dt>
-<dd><p>Method to return the speed in miles per hour detected from the OBDII transmitter.</p>
+<dd><p>Queries speed of car is connected</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>Speed in miles per hour.</p>
+<dd class="field-odd"><p>speed in mph</p>
 </dd>
 <dt class="field-even">Return type</dt>
-<dd class="field-even"><p>var</p>
+<dd class="field-even"><p>string</p>
 </dd>
 </dl>
 </dd></dl>
 
 </dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pathfinder.OBD.main">
+<span class="sig-prename descclassname"><span class="pre">pathfinder.OBD.</span></span><span class="sig-name descname"><span class="pre">main</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pathfinder.OBD.main" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
 
 </section>
 </section>
