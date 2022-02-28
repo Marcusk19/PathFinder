@@ -8,9 +8,7 @@ Code for fetching and displaying directions and obd2 metrics <br />
 ## Structure ##
 Breakdown of file structure: <br />
 * **docs** - contains documentation for codebase
-* **sample** - contains sample code from GitHub used for structuring this repo
 * **src** - most important directory, contains code for PathFinder
-* **target** - not sure what this one is for yet
 * **tests** - contains code for testing
 
 ## Getting Started ##
