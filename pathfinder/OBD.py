@@ -4,9 +4,7 @@
 """
 OBD Module
 ----------
-
 Functions as connectivity between the HUD and OBDII bluetooth transmitter.
-
 Establishes a connection to the bluetooth adapter and gathers measurements such
 as speed and fuel percentage. When it first forms a connection the code has to
 loop multiple times to pull all instructions.
@@ -30,27 +28,29 @@ class Obd:
         print("Connection formed.")
         print("Connection status is: ", checkpoint)
 
-        self.speedInKilo = 0;
+        self.speedInKilo = None
+        self.fuelPercentage = None
 
     def get_speed(self):
         """ Queries speed of car is connected
-
         Returns:
             string: speed in mph
         """
+
+        speed = None
+
         if self.connection.status() == status.CAR_CONNECTED: #If the car is connected and turned on
             speed = self.connection.query(obd.commands.SPEED) #Queries the speed, object with a value in kilometers per hour.
 
             if speed is None:
                 return "Could not obtain speed"
             else:
-                self.speedInKilo = speed  # converts speed from kilo to miles
+                self.speedInKilo = speed
                 # in the meantime, print results for debugging purposes
                 return self.speedInKilo
 
     def get_fuel_percentage(self):
         """ Queries fuel % of car is connected 
-
         Returns:
             string: fuel percentage
         """
