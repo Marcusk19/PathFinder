@@ -59,7 +59,7 @@ class DirectionController():
         Returns:
             string: Text output of json response.
         """
-        url = 'https://maps.googleapis.com/maps/api/directions/json'
+        url = 'https://maps.googleapis.com/maps/api/directions/json' # endpoint for Google API
         # define parameters for http request
         params = dict(
             origin = self.user_origin,
@@ -67,8 +67,8 @@ class DirectionController():
             key = api_key
         )
 
-        resp = requests.get(url = url, params = params)
-        directions = json.loads(resp.text)
+        resp = requests.get(url = url, params = params) # response from Google is loaded into resp
+        directions = json.loads(resp.text) # using a json library to format Google's respone for parsing
         # print(directions)
         routes = directions['routes']
 
@@ -79,7 +79,7 @@ class DirectionController():
                 steps = leg['steps']
                 for step in steps:
                     # instructions from json are in html format
-                    # parsing using BeautifulSoup is required for text
+                    # parsing using BeautifulSoup is required for readable text
                     ins_html = BeautifulSoup(step['html_instructions'], 'html.parser') 
                     instruction = ins_html.get_text()
                     self.instruction_queue.append(instruction)

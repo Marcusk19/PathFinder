@@ -58,7 +58,7 @@ class Display():
                 self.disp.image(self.image)
                 self.disp.show() 
 
-
+        # Note: this function was only used in testing and should not be used for anything else
         def show_text(self, text="not available"):
                 """ 
                 Shows line of text
@@ -100,6 +100,11 @@ class Display():
                 lines = []
                 wpl = len(words) / 4
                 prev = 0 # save prev index for iteration
+                # We want to split the amount of words evenly across the display
+                # There are two cases: 1 - number of words is divisible by 4
+                #                      2 - number of words is NOT divisible by 4
+                # In the case of the latter, we simply append the remainder(%) of 
+                # words onto the last line
                 if(len(words) % 4 == 0):
                         for i in range (0, 4):
                                 lines.append(words[int(prev):int(prev+wpl)])
@@ -111,9 +116,9 @@ class Display():
                         lines.append(words[int(prev):int(prev+wpl + (len(words)%4))])
 
                 self.clear_disp() # clear display for words
-                testfont = ImageFont.truetype("/usr/share/fonts/truetype/msttcorefont/Georgia.ttf", 10)
-                top = -2
+                testfont = ImageFont.truetype("/usr/share/fonts/truetype/msttcorefont/Georgia.ttf", 10) # choosing font size
+                top = -2 # buffer between lines
                 for i in range (0, 4):
-                        self.draw.text((0, (top + i*8)), ' '.join(lines[i]), font=testfont, fill=255)
-                
+                        self.draw.text((0, (top + i*8)), ' '.join(lines[i]), font=testfont, fill=255) # loop for four times, place text on each line
+                # refresh the display for actual output
                 self.refresh()

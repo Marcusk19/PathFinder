@@ -38,15 +38,16 @@ def main():
     """ Main function of PathFinder project. Sets up connection to 
     MQTT broker and calls functions defined below.
     """
-    MQTT_SERVER = "45.56.117.102" # ip address of linode instance
+    MQTT_SERVER = "45.56.117.102" # ip address of linode instance (aka MQTT broker)
     
     client.on_connect = on_connect # override methods
     client.on_message = on_message
 
     client.connect(MQTT_SERVER) # connect to broker
-    client.loop_start() # start new thread loop to handle network
+    client.loop_start() # start new thread loop to handle messaging
     print("Waiting on user input...")
 
+    # loop here until we receive input
     while True:
         if inputA != "" and inputB != "":
             break;
