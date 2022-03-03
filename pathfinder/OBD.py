@@ -54,7 +54,9 @@ class Obd:
         Returns:
             string: fuel percentage
         """
-        self.fuelPercentage = self.connection.query(obd.commands.FUEL_LEVEL).value #Returns a % of fuel
+        if self.connection.status() == status.CAR_CONNECTED: #If the car is connected and turned on
+            self.fuelPercentage = self.connection.query(obd.commands.FUEL_LEVEL).value #Returns a % of fuel
+            
         if self.fuelPercentage is None:
             return "Could not pull fuel percentage"
         else:
