@@ -33,7 +33,8 @@ release = '0.1.0'
 # ones.
 extensions = [
     'sphinx.ext.napoleon',
-    'sphinx.ext.autodoc'
+    'sphinx.ext.autodoc',
+    'docxsphinx'
 ]
 
 autodoc_mock_imports = [

@@ -8,7 +8,7 @@ HUD Module
 Main module for running PathFinder software.
 
 This module calls from display, directions, and OBD to 
-put together fucntionality for the PathFinder project.
+put together functionality for the PathFinder project.
 Furthermore, it acts as a MQTT client subscribed to the
 broker listening to channels 'source' and 'destination'
 
