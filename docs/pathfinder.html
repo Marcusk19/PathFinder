@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
+  <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>pathfinder package &mdash; PathFinder 0.1.0 documentation</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -89,18 +88,18 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="pathfinder-package">
+  <div class="section" id="pathfinder-package">
 <h1>pathfinder package<a class="headerlink" href="#pathfinder-package" title="Permalink to this headline"></a></h1>
-<section id="submodules">
+<div class="section" id="submodules">
 <h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline"></a></h2>
-</section>
-<section id="module-pathfinder.HUD">
+</div>
+<div class="section" id="module-pathfinder.HUD">
 <span id="pathfinder-hud-module"></span><h2>pathfinder.HUD module<a class="headerlink" href="#module-pathfinder.HUD" title="Permalink to this headline"></a></h2>
-<section id="hud-module">
+<div class="section" id="hud-module">
 <h3>HUD Module<a class="headerlink" href="#hud-module" title="Permalink to this headline"></a></h3>
 <p>Main module for running PathFinder software.</p>
 <p>This module calls from display, directions, and OBD to
-put together fucntionality for the PathFinder project.
+put together functionality for the PathFinder project.
 Furthermore, it acts as a MQTT client subscribed to the
 broker listening to channels ‘source’ and ‘destination’</p>
 <dl class="simple">
@@ -196,14 +195,14 @@ Calls getDirections() and getInstructions from DirectionController then
 formats them for Display.</p>
 </dd></dl>
 
-</section>
-</section>
-<section id="module-pathfinder.OBD">
+</div>
+</div>
+<div class="section" id="module-pathfinder.OBD">
 <span id="pathfinder-obd-module"></span><h2>pathfinder.OBD module<a class="headerlink" href="#module-pathfinder.OBD" title="Permalink to this headline"></a></h2>
-<section id="obd-module">
+<div class="section" id="obd-module">
 <h3>OBD Module<a class="headerlink" href="#obd-module" title="Permalink to this headline"></a></h3>
-<p>Functions as connectivity between the HUD and OBDII bluetooth transmitter.</p>
-<p>Establishes a connection to the bluetooth adapter and gathers measurements such
+<p>Functions as connectivity between the HUD and OBDII bluetooth transmitter.
+Establishes a connection to the bluetooth adapter and gathers measurements such
 as speed and fuel percentage. When it first forms a connection the code has to
 loop multiple times to pull all instructions.</p>
 <dl class="py class">
@@ -213,29 +212,17 @@ loop multiple times to pull all instructions.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="pathfinder.OBD.Obd.get_fuel_percentage">
 <span class="sig-name descname"><span class="pre">get_fuel_percentage</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pathfinder.OBD.Obd.get_fuel_percentage" title="Permalink to this definition"></a></dt>
-<dd><p>Queries fuel % of car is connected</p>
-<dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>fuel percentage</p>
-</dd>
-<dt class="field-even">Return type</dt>
-<dd class="field-even"><p>string</p>
-</dd>
-</dl>
+<dd><p>Queries fuel % of car is connected
+:returns: fuel percentage
+:rtype: string</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pathfinder.OBD.Obd.get_speed">
 <span class="sig-name descname"><span class="pre">get_speed</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pathfinder.OBD.Obd.get_speed" title="Permalink to this definition"></a></dt>
-<dd><p>Queries speed of car is connected</p>
-<dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>speed in mph</p>
-</dd>
-<dt class="field-even">Return type</dt>
-<dd class="field-even"><p>string</p>
-</dd>
-</dl>
+<dd><p>Queries speed of car is connected
+:returns: speed in mph
+:rtype: string</p>
 </dd></dl>
 
 </dd></dl>
@@ -245,11 +232,11 @@ loop multiple times to pull all instructions.</p>
 <span class="sig-prename descclassname"><span class="pre">pathfinder.OBD.</span></span><span class="sig-name descname"><span class="pre">main</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pathfinder.OBD.main" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
-</section>
-</section>
-<section id="module-pathfinder.directions">
+</div>
+</div>
+<div class="section" id="module-pathfinder.directions">
 <span id="pathfinder-directions-module"></span><h2>pathfinder.directions module<a class="headerlink" href="#module-pathfinder.directions" title="Permalink to this headline"></a></h2>
-<section id="directions-module">
+<div class="section" id="directions-module">
 <h3>Directions Module<a class="headerlink" href="#directions-module" title="Permalink to this headline"></a></h3>
 <p>This is a module handles all the direction requests and data acquisition for driving instructions.
 Uses the Google Places API to gather instruction data.</p>
@@ -338,11 +325,11 @@ the JSON response to obtain a list of instructions.</p>
 
 </dd></dl>
 
-</section>
-</section>
-<section id="module-pathfinder.display">
+</div>
+</div>
+<div class="section" id="module-pathfinder.display">
 <span id="pathfinder-display-module"></span><h2>pathfinder.display module<a class="headerlink" href="#module-pathfinder.display" title="Permalink to this headline"></a></h2>
-<section id="display-module">
+<div class="section" id="display-module">
 <h3>Display Module<a class="headerlink" href="#display-module" title="Permalink to this headline"></a></h3>
 <p>This is a module to control the OLED display for the PathFinder via I2C protocol.</p>
 <dl class="simple">
@@ -406,12 +393,12 @@ disp.show() to present the image.</p>
 
 </dd></dl>
 
-</section>
-</section>
-<section id="module-pathfinder">
+</div>
+</div>
+<div class="section" id="module-pathfinder">
 <span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-pathfinder" title="Permalink to this headline"></a></h2>
-</section>
-</section>
+</div>
+</div>
 
 
            </div>
