@@ -8,8 +8,10 @@ Code for fetching and displaying directions and obd2 metrics <br />
 ## Structure ##
 Breakdown of file structure: <br />
 * **docs** - contains documentation for codebase
+* **docsrc** - for using sphinx to autogenerate docs
 * **src** - most important directory, contains code for PathFinder
 * **tests** - contains code for testing
+
 
 ## Getting Started ##
 
