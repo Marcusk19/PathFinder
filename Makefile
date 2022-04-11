@@ -5,4 +5,4 @@ test:
 	nosetests tests
 
 run:
-	python3 pathfinder/HUD.py
+	python3 pathfinder/main.py

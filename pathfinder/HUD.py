@@ -28,13 +28,13 @@ from ast import While
 import os, sys, getopt
 from directions import DirectionController
 import paho.mqtt.client as mqtt
-import display
+# import display
 
 inputA = ""
 inputB = ""
 client = mqtt.Client() # instance of Client object
 
-def main():
+def run():
     """ Main function of PathFinder project. Sets up connection to 
     MQTT broker and calls functions defined below.
     """
@@ -130,7 +130,7 @@ def pull_directions():
     controller = DirectionController(locA, locB)
     controller.getDirections()
 
-    screen = display.Display(); # instance of display
+    # screen = display.Display(); # instance of display
 
     # Call handler function to get instructions
     instructions = controller.getInstructions()
@@ -143,11 +143,9 @@ def pull_directions():
     for instruction in instructions:
         print(instruction)
     # call display to show the directions
-    screen.show_direction(instructions[0])
+    # screen.show_direction(instructions[0]) 
     
 # call main function
-if __name__ == '__main__':
-    main()
 
 
 

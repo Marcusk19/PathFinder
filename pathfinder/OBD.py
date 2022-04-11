@@ -12,24 +12,32 @@ loop multiple times to pull all instructions.
 import obd
 from obd import OBDStatus as status
 import time
+import threading
 
 #Attempt to establish a connection and initialize a timer to keep track of wait cycles.
-class Obd:
+class Obd(threading.Thread):
     def __init__(self):
+        threading.Thread.__init__(self) # initialization of thread
+        self.checkpoint = "Disconnected"
         obd.logger.setLevel(obd.logging.DEBUG)
         print("Attempting to establish connection")
+        #self.connect() # comment this line out if testing locally
+        print("Connection formed.")
+        print("Connection status is: ", self.checkpoint)
 
+        self.speedInKilo = None
+        self.fuelPercentage = None
+
+    def connect(self):
+        """Forms a connection to the OBDII module. Retries until a certain number of commands
+        are available.
+        """
         self.connection = obd.OBD(portstr="/dev/rfcomm0", protocol='6', fast=False)
         while (len(self.connection.supported_commands) < 100):
             self.connection = obd.OBD(portstr="/dev/rfcomm0", protocol='6', fast=False)
 
-        checkpoint = self.connection.status()
-        
-        print("Connection formed.")
-        print("Connection status is: ", checkpoint)
+        self.checkpoint = self.connection.status()
 
-        self.speedInKilo = None
-        self.fuelPercentage = None
 
     def get_speed(self):
         """ Queries speed of car is connected
@@ -62,18 +70,21 @@ class Obd:
         else:
             return self.fuelPercentage
 
-def main():
-    reciever = Obd()
-    """ While loop that relies on previous functions to show the user what is occuring. """
-    while True:
-        fuel = str(reciever.get_fuel_percentage())
-        speed = str(reciever.get_speed())
-        speedstring = "Speed is:" + speed
-        fuelstring = "Fuel percentage is: " + fuel
-        print(speedstring)
-        print(fuelstring)
-        print("Updating...")
-        time.sleep(1)  
+    def run(self):
+        """ While loop that relies on previous functions to show the user what is occuring. """
+        while True:
+            # uncomment these lines when testing locally
+            print("OBD is running here...")
+            time.sleep(10)
+            
+            # uncomment these lines when using an actual display
+            # ==================================================
+            # fuel = str(self.get_fuel_percentage())
+            # speed = str(self.get_speed())
+            # speedstring = "Speed is:" + speed
+            # fuelstring = "Fuel percentage is: " + fuel
+            # print(speedstring)
+            # print(fuelstring)
+            # print("Updating...")
+            # time.sleep(1)  
 
-if __name__ == '__main__':
-    main()
