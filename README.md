@@ -24,8 +24,10 @@ To run code first enter working directory:
 `cd pathfinder` <br />
 Install dependencies with:
 `pip install -r requirements.txt` <br />
+or... <br />
+`make init`
 Then execute binary:
-`python src/HUD.py` <br />
+`make run` <br />
 Navigate to [*http://pfnder.ddns.net*](http://pfnder.ddns.net) <br />
 ![website](readme_images/website.png "pfnder.ddns.net")
 From there you can enter a source and destination <br />
@@ -33,7 +35,7 @@ Go back to console and observe output: <br />
 ![output](readme_images/terminal_output.png "terminal output")
 
 ## Running in a container ##
-
+*NOTE: this information is likely outdated as it was written at initialization of the project.* <br />
 Due to differences in local environments, it may be necessary to run the code in a container <br />
 In order to do so you must have docker installed on your machine - follow the instructions [here](https://www.docker.com/get-started) to get started <br />
 Download the Docker Desktop and build the image by running: `docker build -t pathfinder .` <br />
