@@ -25,7 +25,7 @@ To run code first enter working directory:
 Install dependencies with:
 `pip install -r requirements.txt` <br />
 or... <br />
-`make init`
+`make init` <br />
 Then execute binary:
 `make run` <br />
 Navigate to [*http://pfnder.ddns.net*](http://pfnder.ddns.net) <br />
