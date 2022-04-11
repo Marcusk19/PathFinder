@@ -3,4 +3,5 @@ import OBD
 
 obd = OBD.Obd()
 obd.start()
-HUD.run()
+hud = HUD.Hud()
+hud.start()
