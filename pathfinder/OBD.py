@@ -38,6 +38,15 @@ class Obd(threading.Thread):
 
         self.checkpoint = self.connection.status()
 
+    def get_dtc(self):
+        if self.connection.status() == status.CAR_CONNECTED:
+            return self.connection.query(obd.commands.DTC)
+
+    def is_healthy_message(dtc)
+        if len(dtc) == 0:
+            return "Healthy"
+        return "Error(s)"
+
 
     def get_speed(self):
         """ Queries speed of car is connected
@@ -87,4 +96,3 @@ class Obd(threading.Thread):
             # print(fuelstring)
             # print("Updating...")
             # time.sleep(1)  
-
