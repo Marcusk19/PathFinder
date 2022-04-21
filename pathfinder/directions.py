@@ -47,6 +47,7 @@ class DirectionController():
     # FIFO instruction queue
     
     instruction_queue = []
+    coordinate_queue = []
 
     def __init__(self, pointA, pointB):
         self.user_origin = pointA
@@ -82,6 +83,8 @@ class DirectionController():
                     # parsing using BeautifulSoup is required for readable text
                     ins_html = BeautifulSoup(step['html_instructions'], 'html.parser') 
                     instruction = ins_html.get_text()
+                    coordinate = step['end_location']
+                    self.coordinate_queue.append(coordinate)
                     self.instruction_queue.append(instruction)
 
         
@@ -95,13 +98,13 @@ class DirectionController():
         """
         return self.instruction_queue
     
-    def getManeuvers(self):
+    def getCoordinates(self):
         """ Returns list of maneuvers parsed from JSON response after calling .getDirections().
 
         Returns:
             list: list of all maneuvers
         """
         # not used yet
-        return self.maneuver_queue
+        return self.coordinate_queue
 
         

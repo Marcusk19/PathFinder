@@ -16,7 +16,7 @@ import threading
 
 #Attempt to establish a connection and initialize a timer to keep track of wait cycles.
 class Obd(threading.Thread):
-    def __init__(self):
+    def __init__(self, display):
         threading.Thread.__init__(self) # initialization of thread
         self.checkpoint = "Disconnected"
         obd.logger.setLevel(obd.logging.DEBUG)
@@ -24,7 +24,7 @@ class Obd(threading.Thread):
         #self.connect() # comment this line out if testing locally
         print("Connection formed.")
         print("Connection status is: ", self.checkpoint)
-
+        self.screen = display
         self.speedInKilo = None
         self.fuelPercentage = None
 
@@ -42,7 +42,7 @@ class Obd(threading.Thread):
         if self.connection.status() == status.CAR_CONNECTED:
             return self.connection.query(obd.commands.DTC)
 
-    def is_healthy_message(dtc)
+    def is_healthy_message(dtc):
         if len(dtc) == 0:
             return "Healthy"
         return "Error(s)"
@@ -81,10 +81,13 @@ class Obd(threading.Thread):
 
     def run(self):
         """ While loop that relies on previous functions to show the user what is occuring. """
+        count = 0
         while True:
             # uncomment these lines when testing locally
+            self.screen.show_obd(count)
             print("OBD is running here...")
             time.sleep(10)
+            count = count + 1
             
             # uncomment these lines when using an actual display
             # ==================================================

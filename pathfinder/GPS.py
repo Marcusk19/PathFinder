@@ -1,12 +1,12 @@
 from gps import *
 import geopy.distance
 
-class GPS(threading.Thread):
+class GPS_controller():
     def __init__(self):
-        threading.Thread.__init__(self) # initialization of thread
-        gpsd = gps(mode=WATCH_ENABLE)
+        self.gpsd = gps(mode=WATCH_ENABLE)
 
     def get_coordinates(self):
+        self.gpsd.next()
         return (self.gpsd.fix.latitude, self.gpsd.fix.longitude)
 
     def calculate_distance(self, cords1, cords2):

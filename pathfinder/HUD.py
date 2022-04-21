@@ -24,23 +24,26 @@ Typical usage example:
     python3 pathfinder/HUD.py
 """
 # imports
-from ast import While
-import os, sys, getopt
 from directions import DirectionController
 import paho.mqtt.client as mqtt
 import threading
-# import display # comment out this line if testing locally
+import GPS
 class Hud(threading.Thread):
-    def __init__(self):
+    def __init__(self, display):
         threading.Thread.__init__(self)
         self.inputA = ""
         self.inputB = ""
         self.client = mqtt.Client() # instance of Client object
+        self.instructions = []
+        self.coordinates = []
+        self.gps = GPS.GPS_controller()
+        self.screen = display
 
     def run(self):
         """ Main function of PathFinder project. Sets up connection to 
         MQTT broker and calls functions defined below.
         """
+
         MQTT_SERVER = "45.56.117.102" # ip address of linode instance (aka MQTT broker)
         
         self.client.on_connect = self.on_connect # override methods
@@ -50,12 +53,32 @@ class Hud(threading.Thread):
         self.client.loop_start() # start new thread loop to handle messaging
         print("Waiting on user input...")
 
+
         # loop here until we receive input
         while True:
             if self.inputA != "" and self.inputB != "":
                 break;
 
         self.pull_directions()
+
+        step = 0
+        """
+        while True:
+            current_location = self.gps.get_coordinates()
+
+            next_lat = float(self.coordinates[step]['lat'])
+            next_lng = float(self.coordinates[step]['lng'])
+            next_location = (next_lat, next_lng)
+            distance_to_point = self.gps.calculate_distance(current_location, next_location)
+            
+            if distance_to_point < 0.005:
+                step = step + 1
+                if step > len(self.coordinates):
+                    break
+                self.screen.show_direction(self.instructions[step]) 
+
+            print(distance_to_point) 
+        """
         self.client.loop_stop()
 
 
@@ -131,21 +154,19 @@ class Hud(threading.Thread):
         controller = DirectionController(locA, locB)
         controller.getDirections()
 
-        # screen = display.Display(); # instance of display
-
         # Call handler function to get instructions
-        instructions = controller.getInstructions()
+        self.instructions = controller.getInstructions()
+        self.coordinates = controller.getCoordinates()
         
         # empty list means directions were unable to be found
-        if len(instructions) == 0:
+        if len(self.instructions) == 0:
             print("Directions could not be found")
 
         # print out instruction by instruction
-        for instruction in instructions:
+        for instruction in self.instructions:
             print(instruction)
+        for coordinate in self.coordinates:
+            print(coordinate)
         # call display to show the directions
-        # screen.show_direction(instructions[0]) 
+        self.screen.show_direction(self.instructions[0]) 
         
-
-
-

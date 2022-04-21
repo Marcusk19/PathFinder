@@ -49,6 +49,10 @@ class Display():
                 # Draw a black filled box to clear the image.
                 self.draw.rectangle((0, 0, self.width, self.height), outline=0, fill=0)
                 self.refresh()
+
+        def clear_bot(self):
+                self.draw.rectangle((0, 24, self.width, self.height*2), outline=0, fill=0)
+                self.refresh()
         
         def refresh(self):
                 """ Refreshes the display to show a new image. 
@@ -82,7 +86,7 @@ class Display():
                 top = padding
                 bottom = self.height - padding
                 x = 0
-                testfont = ImageFont.truetype("/usr/share/fonts/truetype/msttcorefont/Georgia.ttf", 8)
+                testfont = ImageFont.truetype("/usr/share/fonts/truetype/msttcorefont/Georgia.ttf", 10)
                 self.draw.rectangle((0, 0, self.width, self.height), outline=0, fill=0)
                 self.draw.text((0, top), "Turn left on", font=testfont, fill=255)
                 self.draw.text((0, top+8), "Entrepreneur Drive", font=testfont, fill=255)
@@ -91,34 +95,49 @@ class Display():
         
         def show_direction(self, text):
                 """ 
-                Takes instruction input and splits into 4 lines for display
+                Takes instruction input and splits into 3 lines for display
                 
                 Args:
                         text (string): String containing instruction.
                 """
                 words = text.split()
                 lines = []
-                wpl = len(words) / 4
+                wpl = len(words) / 3
                 prev = 0 # save prev index for iteration
                 # We want to split the amount of words evenly across the display
-                # There are two cases: 1 - number of words is divisible by 4
-                #                      2 - number of words is NOT divisible by 4
+                # There are two cases: 1 - number of words is divisible by 3
+                #                      2 - number of words is NOT divisible by 3
                 # In the case of the latter, we simply append the remainder(%) of 
                 # words onto the last line
-                if(len(words) % 4 == 0):
-                        for i in range (0, 4):
+                if(len(words) % 3 == 0):
+                        for i in range (0, 3):
                                 lines.append(words[int(prev):int(prev+wpl)])
                                 prev = prev+wpl # increment prev
                 else:
-                        for i in range (0,3):
+                        for i in range (0,2):
                                 lines.append(words[int(prev):int(prev+wpl)])
                                 prev = prev+wpl # increment prev
-                        lines.append(words[int(prev):int(prev+wpl + (len(words)%4))])
+                        lines.append(words[int(prev):int(prev+wpl + (len(words)%3))])
 
                 self.clear_disp() # clear display for words
                 testfont = ImageFont.truetype("/usr/share/fonts/truetype/msttcorefont/Georgia.ttf", 10) # choosing font size
                 top = -2 # buffer between lines
-                for i in range (0, 4):
+                for i in range (0, 3):
                         self.draw.text((0, (top + i*8)), ' '.join(lines[i]), font=testfont, fill=255) # loop for four times, place text on each line
                 # refresh the display for actual output
                 self.refresh()
+
+        def show_obd(self, count):
+                self.clear_bot()
+                # Load default font.
+                
+                font = ImageFont.load_default()
+
+                padding = -2
+                top = padding
+                bottom = self.height - padding
+                x = 0
+                testfont = ImageFont.truetype("/usr/share/fonts/truetype/msttcorefont/Georgia.ttf", 8)
+                self.draw.text((0, top+24), "OBD is here " + str(count), font=testfont, fill=255)
+                self.refresh()
+
