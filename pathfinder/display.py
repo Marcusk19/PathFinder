@@ -51,7 +51,11 @@ class Display():
                 self.refresh()
 
         def clear_bot(self):
-                self.draw.rectangle((0, 24, self.width, self.height*2), outline=0, fill=0)
+                self.draw.rectangle((0, 24, self.width, 32), outline=0, fill=0)
+                self.refresh()
+        
+        def clear_mid(self):
+                self.draw.rectangle((0, 16, self.width, 24), outline=0, fill=0)
                 self.refresh()
         
         def refresh(self):
@@ -102,32 +106,32 @@ class Display():
                 """
                 words = text.split()
                 lines = []
-                wpl = len(words) / 3
+                wpl = len(words) / 2
                 prev = 0 # save prev index for iteration
                 # We want to split the amount of words evenly across the display
-                # There are two cases: 1 - number of words is divisible by 3
-                #                      2 - number of words is NOT divisible by 3
+                # There are two cases: 1 - number of words is divisible by 2
+                #                      2 - number of words is NOT divisible by 2
                 # In the case of the latter, we simply append the remainder(%) of 
                 # words onto the last line
-                if(len(words) % 3 == 0):
-                        for i in range (0, 3):
+                if(len(words) % 2 == 0):
+                        for i in range (0, 2):
                                 lines.append(words[int(prev):int(prev+wpl)])
                                 prev = prev+wpl # increment prev
                 else:
-                        for i in range (0,2):
+                        for i in range (0,1):
                                 lines.append(words[int(prev):int(prev+wpl)])
                                 prev = prev+wpl # increment prev
-                        lines.append(words[int(prev):int(prev+wpl + (len(words)%3))])
+                        lines.append(words[int(prev):int(prev+wpl + (len(words)%2))])
 
                 self.clear_disp() # clear display for words
-                testfont = ImageFont.truetype("/usr/share/fonts/truetype/msttcorefont/Georgia.ttf", 10) # choosing font size
-                top = -2 # buffer between lines
-                for i in range (0, 3):
+                testfont = ImageFont.truetype("/usr/share/fonts/truetype/msttcorefont/Georgia.ttf", 8) # choosing font size
+                top = 0 # buffer between lines
+                for i in range (0, 2):
                         self.draw.text((0, (top + i*8)), ' '.join(lines[i]), font=testfont, fill=255) # loop for four times, place text on each line
                 # refresh the display for actual output
                 self.refresh()
 
-        def show_obd(self, count):
+        def show_obd(self, speed, fuel, health):
                 self.clear_bot()
                 # Load default font.
                 
@@ -137,7 +141,34 @@ class Display():
                 top = padding
                 bottom = self.height - padding
                 x = 0
-                testfont = ImageFont.truetype("/usr/share/fonts/truetype/msttcorefont/Georgia.ttf", 8)
-                self.draw.text((0, top+24), "OBD is here " + str(count), font=testfont, fill=255)
+                testfont = ImageFont.truetype("/usr/share/fonts/truetype/msttcorefont/Georgia.ttf", 9)
+                # fuel = "{:0f}".format(fuel)
+                OBD_response = "F: " + str(fuel) + "% " + "    S: " + str(speed) + "    H: " + health
+                self.draw.text((0, top+24), OBD_response, font=testfont, fill=255)
                 self.refresh()
+
+        def show_arrow(self, current_inst, distance):
+                self.clear_mid()
+                font = ImageFont.load_default()
+
+                padding = -2
+                top = padding
+                bottom = self.height - padding
+                x = 0
+                testfont = ImageFont.truetype("/usr/share/fonts/truetype/msttcorefont/Georgia.ttf", 9)
+
+                arrow = ""
+                if current_inst.__contains__("right"):
+                        arrow = "->"
+                elif current_inst.__contains__("left"):
+                        arrow = "<-"
+                else:
+                        arrow = "^"
+                
+                arrow_response = arrow + " in " + str(distance) + " miles"
+                self.draw.text((0, top+16), arrow_response, font=testfont, fill=255)
+                self.refresh()
+                
+
+                
 

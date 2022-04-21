@@ -28,6 +28,7 @@ from directions import DirectionController
 import paho.mqtt.client as mqtt
 import threading
 import GPS
+import time
 class Hud(threading.Thread):
     def __init__(self, display):
         threading.Thread.__init__(self)
@@ -62,23 +63,27 @@ class Hud(threading.Thread):
         self.pull_directions()
 
         step = 0
-        """
+
         while True:
             current_location = self.gps.get_coordinates()
 
             next_lat = float(self.coordinates[step]['lat'])
             next_lng = float(self.coordinates[step]['lng'])
             next_location = (next_lat, next_lng)
-            distance_to_point = self.gps.calculate_distance(current_location, next_location)
-            
-            if distance_to_point < 0.005:
+            if current_location[0] == "nan":
+                distance_to_point = 10000000
+            else: 
+                distance_to_point = self.gps.calculate_distance(current_location, next_location)
+            self.screen.show_arrow(self.instructions[step], distance_to_point)
+            if distance_to_point < 0.1:
                 step = step + 1
                 if step > len(self.coordinates):
                     break
                 self.screen.show_direction(self.instructions[step]) 
 
-            print(distance_to_point) 
-        """
+            print(distance_to_point)
+            time.sleep(0.5)
+
         self.client.loop_stop()
 
 

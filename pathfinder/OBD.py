@@ -25,24 +25,26 @@ class Obd(threading.Thread):
         print("Connection formed.")
         print("Connection status is: ", self.checkpoint)
         self.screen = display
-        self.speedInKilo = None
-        self.fuelPercentage = None
+        self.speedInMiles = 0.00
+        self.fuelPercentage = 0.00
 
-    def connect(self):
-        """Forms a connection to the OBDII module. Retries until a certain number of commands
-        are available.
-        """
         self.connection = obd.OBD(portstr="/dev/rfcomm0", protocol='6', fast=False)
-        while (len(self.connection.supported_commands) < 100):
+        retries = 0
+        while (len(self.connection.supported_commands) < 100 and retries < 100):
             self.connection = obd.OBD(portstr="/dev/rfcomm0", protocol='6', fast=False)
+            retries = retries + 1
 
-        self.checkpoint = self.connection.status()
+        if self.connection is not None:
+            self.checkpoint = self.connection.status()
+
 
     def get_dtc(self):
         if self.connection.status() == status.CAR_CONNECTED:
             return self.connection.query(obd.commands.DTC)
 
-    def is_healthy_message(dtc):
+    def is_healthy_message(self, dtc):
+        if dtc is None:
+            return "Disconnected"
         if len(dtc) == 0:
             return "Healthy"
         return "Error(s)"
@@ -60,11 +62,11 @@ class Obd(threading.Thread):
             speed = self.connection.query(obd.commands.SPEED) #Queries the speed, object with a value in kilometers per hour.
 
             if speed is None:
-                return "Could not obtain speed"
+                return 0.00
             else:
-                self.speedInKilo = speed
+                self.speedInMiles = speed.value.to('mph')
                 # in the meantime, print results for debugging purposes
-                return self.speedInKilo
+                return self.speedInMiles
 
     def get_fuel_percentage(self):
         """ Queries fuel % of car is connected 
@@ -75,7 +77,7 @@ class Obd(threading.Thread):
             self.fuelPercentage = self.connection.query(obd.commands.FUEL_LEVEL).value #Returns a % of fuel
             
         if self.fuelPercentage is None:
-            return "Could not pull fuel percentage"
+            return 0.00
         else:
             return self.fuelPercentage
 
@@ -84,10 +86,11 @@ class Obd(threading.Thread):
         count = 0
         while True:
             # uncomment these lines when testing locally
-            self.screen.show_obd(count)
+            dtc_code = self.get_dtc()
+            health = self.is_healthy_message(dtc_code)
+            self.screen.show_obd(self.speedInMiles, self.fuelPercentage, health)
             print("OBD is running here...")
-            time.sleep(10)
-            count = count + 1
+            time.sleep(0.5)
             
             # uncomment these lines when using an actual display
             # ==================================================

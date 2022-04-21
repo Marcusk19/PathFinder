@@ -10,4 +10,5 @@ class GPS_controller():
         return (self.gpsd.fix.latitude, self.gpsd.fix.longitude)
 
     def calculate_distance(self, cords1, cords2):
-        return geopy.distance.geodesic(cords1, cords2).miles
+        distance =  geopy.distance.geodesic(cords1, cords2).miles
+        return float("{:.2f}".format(distance))
