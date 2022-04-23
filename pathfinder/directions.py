@@ -83,7 +83,7 @@ class DirectionController():
                     # parsing using BeautifulSoup is required for readable text
                     ins_html = BeautifulSoup(step['html_instructions'], 'html.parser') 
                     instruction = ins_html.get_text()
-                    coordinate = step['end_location']
+                    coordinate = step['start_location']
                     self.coordinate_queue.append(coordinate)
                     self.instruction_queue.append(instruction)
 

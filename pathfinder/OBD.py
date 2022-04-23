@@ -28,10 +28,10 @@ class Obd(threading.Thread):
         self.speedInMiles = 0.00
         self.fuelPercentage = 0.00
 
-        self.connection = obd.OBD(portstr="/dev/rfcomm0", protocol='6', fast=False)
+        self.connection = obd.OBD(portstr="/dev/rfcomm0", protocol='6', baudrate=38400, fast=False)
         retries = 0
-        while (len(self.connection.supported_commands) < 100 and retries < 100):
-            self.connection = obd.OBD(portstr="/dev/rfcomm0", protocol='6', fast=False)
+        while (len(self.connection.supported_commands) < 100):
+            self.connection = obd.OBD(portstr="/dev/rfcomm0", protocol='6', baudrate=38400, fast=False)
             retries = retries + 1
 
         if self.connection is not None:
@@ -40,12 +40,12 @@ class Obd(threading.Thread):
 
     def get_dtc(self):
         if self.connection.status() == status.CAR_CONNECTED:
-            return self.connection.query(obd.commands.DTC)
+            return self.connection.query(obd.commands.GET_DTC)
 
     def is_healthy_message(self, dtc):
         if dtc is None:
             return "Disconnected"
-        if len(dtc) == 0:
+        if len(dtc.value) == 0:
             return "Healthy"
         return "Error(s)"
 
@@ -66,7 +66,7 @@ class Obd(threading.Thread):
             else:
                 self.speedInMiles = speed.value.to('mph')
                 # in the meantime, print results for debugging purposes
-                return self.speedInMiles
+                return int(self.speedInMiles.magnitude)
 
     def get_fuel_percentage(self):
         """ Queries fuel % of car is connected 
@@ -79,7 +79,7 @@ class Obd(threading.Thread):
         if self.fuelPercentage is None:
             return 0.00
         else:
-            return self.fuelPercentage
+            return int(self.fuelPercentage.magnitude)
 
     def run(self):
         """ While loop that relies on previous functions to show the user what is occuring. """
@@ -88,6 +88,8 @@ class Obd(threading.Thread):
             # uncomment these lines when testing locally
             dtc_code = self.get_dtc()
             health = self.is_healthy_message(dtc_code)
+            self.fuelPercentage = self.get_fuel_percentage()
+            self.speedInMiles = self.get_speed()
             self.screen.show_obd(self.speedInMiles, self.fuelPercentage, health)
             print("OBD is running here...")
             time.sleep(0.5)

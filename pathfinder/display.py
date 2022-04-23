@@ -124,7 +124,7 @@ class Display():
                         lines.append(words[int(prev):int(prev+wpl + (len(words)%2))])
 
                 self.clear_disp() # clear display for words
-                testfont = ImageFont.truetype("/usr/share/fonts/truetype/msttcorefont/Georgia.ttf", 8) # choosing font size
+                testfont = ImageFont.truetype("/usr/share/fonts/truetype/msttcorefont/Georgia.ttf", 7) # choosing font size
                 top = 0 # buffer between lines
                 for i in range (0, 2):
                         self.draw.text((0, (top + i*8)), ' '.join(lines[i]), font=testfont, fill=255) # loop for four times, place text on each line
@@ -143,6 +143,7 @@ class Display():
                 x = 0
                 testfont = ImageFont.truetype("/usr/share/fonts/truetype/msttcorefont/Georgia.ttf", 9)
                 # fuel = "{:0f}".format(fuel)
+                # speed = "{:0f}".format(speed)
                 OBD_response = "F: " + str(fuel) + "% " + "    S: " + str(speed) + "    H: " + health
                 self.draw.text((0, top+24), OBD_response, font=testfont, fill=255)
                 self.refresh()

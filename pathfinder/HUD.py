@@ -65,11 +65,13 @@ class Hud(threading.Thread):
         step = 0
 
         while True:
+            # self.gps.gpsd.next()
             current_location = self.gps.get_coordinates()
 
             next_lat = float(self.coordinates[step]['lat'])
             next_lng = float(self.coordinates[step]['lng'])
             next_location = (next_lat, next_lng)
+            print("Current location: " + str(current_location) + "\t Next location: " + str(next_location))
             if current_location[0] == "nan":
                 distance_to_point = 10000000
             else: 
