@@ -47,7 +47,7 @@ class Obd(threading.Thread):
             return "Disconnected"
         if len(dtc.value) == 0:
             return "Healthy"
-        if len(dtc.value == 1):
+        if len(dtc.value) == 1:
             return dtc.value[0]
         return dtc[0][0]
 
