@@ -51,10 +51,14 @@ class Display():
                 self.refresh()
 
         def clear_bot(self):
+                """Clears only the bottom line of the display.
+                """
                 self.draw.rectangle((0, 24, self.width, 32), outline=0, fill=0)
                 self.refresh()
         
         def clear_mid(self):
+                """Clears only the third line of the display.
+                """
                 self.draw.rectangle((0, 16, self.width, 24), outline=0, fill=0)
                 self.refresh()
         
@@ -69,7 +73,8 @@ class Display():
         # Note: this function was only used in testing and should not be used for anything else
         def show_text(self, text="not available"):
                 """ 
-                Shows line of text
+                Shows line of text.
+                * NOTE: this function was used in testing and is not used elsewhere *
 
                 Args:
                         text (string): text to put on display, defaults to 'not available'
@@ -132,6 +137,13 @@ class Display():
                 self.refresh()
 
         def show_obd(self, speed, fuel, health):
+                """Shows status of the OBD on the bottom line of the display. Displays fuel, speed, and health.
+
+                Args:
+                    speed (Any): Speed from OBD module.
+                    fuel (Any): Fuel from OBD module.
+                    health (Any): Health from OBD module.
+                """
                 self.clear_bot()
                 # Load default font.
                 
@@ -149,6 +161,13 @@ class Display():
                 self.refresh()
 
         def show_arrow(self, current_inst, distance):
+                """Prints directional indicator to third line on the display, along with the distance before
+                next instruction.
+
+                Args:
+                    current_inst (Any): Current instruction to determine indicator.
+                    distance (Any): Distance in miles to next point.
+                """
                 self.clear_mid()
                 font = ImageFont.load_default()
 

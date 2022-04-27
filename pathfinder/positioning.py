@@ -2,6 +2,7 @@ import serial
 """
     Positioning module
     ---
+    * NOTE: this module has been deprecated in favor of GPS.py *
     Geolocation using gps module
     view https://www.sparkfun.com/tutorials/403 for more information
     https://maker.pro/raspberry-pi/tutorial/how-to-read-gps-data-with-python-on-a-raspberry-pi

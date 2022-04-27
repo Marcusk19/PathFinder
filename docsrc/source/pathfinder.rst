@@ -20,6 +20,14 @@ pathfinder.OBD module
    :undoc-members:
    :show-inheritance:
 
+pathfinder.GPS module
+---------------------
+
+.. automodule:: pathfinder.GPS
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 pathfinder.directions module
 ----------------------------
 

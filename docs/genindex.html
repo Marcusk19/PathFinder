@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Index &mdash; PathFinder 0.1.0 documentation</title>
+  <title>Index &mdash; PathFinder 0.1.1 documentation</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
@@ -69,6 +69,7 @@
  <a href="#C"><strong>C</strong></a>
  | <a href="#D"><strong>D</strong></a>
  | <a href="#G"><strong>G</strong></a>
+ | <a href="#H"><strong>H</strong></a>
  | <a href="#I"><strong>I</strong></a>
  | <a href="#M"><strong>M</strong></a>
  | <a href="#O"><strong>O</strong></a>
@@ -81,7 +82,17 @@
 <h2 id="C">C</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="pathfinder.html#pathfinder.GPS.GPS_controller.calculate_distance">calculate_distance() (pathfinder.GPS.GPS_controller method)</a>
+</li>
+      <li><a href="pathfinder.html#pathfinder.display.Display.clear_bot">clear_bot() (pathfinder.display.Display method)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="pathfinder.html#pathfinder.display.Display.clear_disp">clear_disp() (pathfinder.display.Display method)</a>
+</li>
+      <li><a href="pathfinder.html#pathfinder.display.Display.clear_mid">clear_mid() (pathfinder.display.Display method)</a>
+</li>
+      <li><a href="pathfinder.html#pathfinder.directions.DirectionController.coordinate_queue">coordinate_queue (pathfinder.directions.DirectionController attribute)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -103,17 +114,31 @@
 <h2 id="G">G</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="pathfinder.html#pathfinder.GPS.GPS_controller.get_coordinates">get_coordinates() (pathfinder.GPS.GPS_controller method)</a>
+</li>
+      <li><a href="pathfinder.html#pathfinder.OBD.Obd.get_dtc">get_dtc() (pathfinder.OBD.Obd method)</a>
+</li>
       <li><a href="pathfinder.html#pathfinder.OBD.Obd.get_fuel_percentage">get_fuel_percentage() (pathfinder.OBD.Obd method)</a>
 </li>
       <li><a href="pathfinder.html#pathfinder.OBD.Obd.get_speed">get_speed() (pathfinder.OBD.Obd method)</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="pathfinder.html#pathfinder.directions.DirectionController.getCoordinates">getCoordinates() (pathfinder.directions.DirectionController method)</a>
+</li>
       <li><a href="pathfinder.html#pathfinder.directions.DirectionController.getDirections">getDirections() (pathfinder.directions.DirectionController method)</a>
 </li>
       <li><a href="pathfinder.html#pathfinder.directions.DirectionController.getInstructions">getInstructions() (pathfinder.directions.DirectionController method)</a>
 </li>
-      <li><a href="pathfinder.html#pathfinder.directions.DirectionController.getManeuvers">getManeuvers() (pathfinder.directions.DirectionController method)</a>
+      <li><a href="pathfinder.html#pathfinder.GPS.GPS_controller">GPS_controller (class in pathfinder.GPS)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="H">H</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="pathfinder.html#pathfinder.HUD.Hud">Hud (class in pathfinder.HUD)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -127,18 +152,14 @@
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="pathfinder.html#id0">instruction_queue (pathfinder.directions.DirectionController attribute)</a>, <a href="pathfinder.html#pathfinder.directions.DirectionController.instruction_queue">[1]</a>
 </li>
+      <li><a href="pathfinder.html#pathfinder.OBD.Obd.is_healthy_message">is_healthy_message() (pathfinder.OBD.Obd method)</a>
+</li>
   </ul></td>
 </tr></table>
 
 <h2 id="M">M</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="pathfinder.html#pathfinder.HUD.main">main() (in module pathfinder.HUD)</a>
-
-      <ul>
-        <li><a href="pathfinder.html#pathfinder.OBD.main">(in module pathfinder.OBD)</a>
-</li>
-      </ul></li>
       <li>
     module
 
@@ -148,6 +169,8 @@
         <li><a href="pathfinder.html#module-pathfinder.directions">pathfinder.directions</a>
 </li>
         <li><a href="pathfinder.html#module-pathfinder.display">pathfinder.display</a>
+</li>
+        <li><a href="pathfinder.html#module-pathfinder.GPS">pathfinder.GPS</a>
 </li>
         <li><a href="pathfinder.html#module-pathfinder.HUD">pathfinder.HUD</a>
 </li>
@@ -162,15 +185,15 @@
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="pathfinder.html#pathfinder.OBD.Obd">Obd (class in pathfinder.OBD)</a>
 </li>
-      <li><a href="pathfinder.html#pathfinder.HUD.on_connect">on_connect() (in module pathfinder.HUD)</a>
+      <li><a href="pathfinder.html#pathfinder.HUD.Hud.on_connect">on_connect() (pathfinder.HUD.Hud method)</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="pathfinder.html#pathfinder.HUD.on_dest">on_dest() (in module pathfinder.HUD)</a>
+      <li><a href="pathfinder.html#pathfinder.HUD.Hud.on_dest">on_dest() (pathfinder.HUD.Hud method)</a>
 </li>
-      <li><a href="pathfinder.html#pathfinder.HUD.on_message">on_message() (in module pathfinder.HUD)</a>
+      <li><a href="pathfinder.html#pathfinder.HUD.Hud.on_message">on_message() (pathfinder.HUD.Hud method)</a>
 </li>
-      <li><a href="pathfinder.html#pathfinder.HUD.on_source">on_source() (in module pathfinder.HUD)</a>
+      <li><a href="pathfinder.html#pathfinder.HUD.Hud.on_source">on_source() (pathfinder.HUD.Hud method)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -202,6 +225,13 @@
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
       <li>
+    pathfinder.GPS
+
+      <ul>
+        <li><a href="pathfinder.html#module-pathfinder.GPS">module</a>
+</li>
+      </ul></li>
+      <li>
     pathfinder.HUD
 
       <ul>
@@ -215,7 +245,7 @@
         <li><a href="pathfinder.html#module-pathfinder.OBD">module</a>
 </li>
       </ul></li>
-      <li><a href="pathfinder.html#pathfinder.HUD.pull_directions">pull_directions() (in module pathfinder.HUD)</a>
+      <li><a href="pathfinder.html#pathfinder.HUD.Hud.pull_directions">pull_directions() (pathfinder.HUD.Hud method)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -226,15 +256,27 @@
       <li><a href="pathfinder.html#pathfinder.display.Display.refresh">refresh() (pathfinder.display.Display method)</a>
 </li>
   </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="pathfinder.html#pathfinder.HUD.Hud.run">run() (pathfinder.HUD.Hud method)</a>
+
+      <ul>
+        <li><a href="pathfinder.html#pathfinder.OBD.Obd.run">(pathfinder.OBD.Obd method)</a>
+</li>
+      </ul></li>
+  </ul></td>
 </tr></table>
 
 <h2 id="S">S</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="pathfinder.html#pathfinder.display.Display.show_arrow">show_arrow() (pathfinder.display.Display method)</a>
+</li>
       <li><a href="pathfinder.html#pathfinder.display.Display.show_direction">show_direction() (pathfinder.display.Display method)</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="pathfinder.html#pathfinder.display.Display.show_obd">show_obd() (pathfinder.display.Display method)</a>
+</li>
       <li><a href="pathfinder.html#pathfinder.display.Display.show_text">show_text() (pathfinder.display.Display method)</a>
 </li>
   </ul></td>
