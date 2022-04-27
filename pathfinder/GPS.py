@@ -1,7 +1,7 @@
 """
 GPS module
 ----------
-The GPS module handles the reading of data from our UBLOX chip via gpsd.
+The GPS module handles the reading of data from our NEO-6M chip via gpsd.
 It contains two helper functions: one to get coordinates for the current location,
 and one to calculate the distance between two coordinate points.
 """
