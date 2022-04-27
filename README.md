@@ -10,7 +10,7 @@ Breakdown of file structure: <br />
 * **docs** - contains documentation for codebase
 * **docsrc** - for using sphinx to autogenerate docs
 * **src** - most important directory, contains code for PathFinder
-* **tests** - contains code for testing
+* **tests** - contains code for testing *(no longer in use)*
 
 
 ## Getting Started ##
@@ -35,7 +35,7 @@ Go back to console and observe output: <br />
 ![output](readme_images/terminal_output.png "terminal output")
 
 ## Running in a container ##
-*NOTE: this information is likely outdated as it was written at initialization of the project.* <br />
+*NOTE: this information is deprecated as it was written at initialization of the project.* <br />
 Due to differences in local environments, it may be necessary to run the code in a container <br />
 In order to do so you must have docker installed on your machine - follow the instructions [here](https://www.docker.com/get-started) to get started <br />
 Download the Docker Desktop and build the image by running: `docker build -t pathfinder .` <br />
@@ -49,14 +49,18 @@ View the `example.env` file to see how you should set up your .env file and repl
 
 ## Messaging System ##
 Code uses MQTT messaging protocol to send and receive information. Depicted below is the flow of data for the PathFinder: <br />
-![diagram](readme_images/mqtt.jpg "information flow")
+![diagram](readme_images/mqtt.jpg "information flow") <br />
+Code for our client can be found [here](https://github.com/Marcusk19/MQTT-web-app "webapp")
+
+## Writing the docs ##
+Change working directory to docsrc `cd docsrc` <br />
+Run `make github` - html documentation can be found in docs directory. <br />
 
 [TODO]
-## External Docs ##
+## External Links ##
 * [Source code for pfnder.ddns.net](https://github.com/Marcusk19/MQTT-web-app "webapp")
 * [PathFinder documentation](https://marcusk19.github.io/PathFinder/pathfinder.html#submodules "read the docs")
 * [Docker](https://docs.docker.com/get-started/ "Getting started")
-* [Tkinter](https://docs.python.org/3/library/tkinter.html "Tkinter docs")
 * [Git contributing](http://www.git-scm.com/book/en/v2/Distributed-Git-Contributing-to-a-Project#Commit-Guidelines "Using git")
 * [Python structuring](https://docs.python-guide.org/writing/structure/ "How to structure python code")
 * [Python testing](https://docs.python-guide.org/writing/tests/ "How to test your code")
