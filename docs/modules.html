@@ -71,6 +71,18 @@
              
   <section id="pathfinder">
 <h1>pathfinder<a class="headerlink" href="#pathfinder" title="Permalink to this headline"></a></h1>
+<p>These are the underlying modules for the PathFinder. Each one has a specific role to perform and most are tied together under
+our two large “main” modules: OBD.py and HUD.py. A python file main.py is used as an entrypoint for the program and each main
+module takes their own respective thread to run concurrently.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># an instance of OBD and HUD declared and ran</span>
+<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+   <span class="n">screen</span> <span class="o">=</span> <span class="n">display</span><span class="o">.</span><span class="n">Display</span><span class="p">()</span>
+   <span class="n">obd</span> <span class="o">=</span> <span class="n">OBD</span><span class="o">.</span><span class="n">Obd</span><span class="p">(</span><span class="n">screen</span><span class="p">)</span>
+   <span class="n">hud</span> <span class="o">=</span> <span class="n">HUD</span><span class="o">.</span><span class="n">Hud</span><span class="p">(</span><span class="n">screen</span><span class="p">)</span>
+   <span class="n">hud</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+   <span class="n">obd</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+</pre></div>
+</div>
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="pathfinder.html">pathfinder package</a><ul>
