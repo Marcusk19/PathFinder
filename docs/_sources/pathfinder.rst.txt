@@ -1,8 +1,12 @@
 pathfinder package
 ==================
+The pathfinder package contains all the modules required to run the heads up display.
 
 Submodules
 ----------
+Necessary submodules are listed below.
+Note: not all modules as seen in the github are here, as some were used for testing
+and are not used.
 
 pathfinder.HUD module
 ---------------------
